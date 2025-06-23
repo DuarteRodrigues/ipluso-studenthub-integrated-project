@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+/**
+ * @file App.js
+ * @description Main application component for the IPLuso StudentHub Integrated Project.
+ * Sets up the React Router for client-side navigation and renders the Navbar and page components.
+ * Defines routes for Home, FAQ, Contacts, and Tests pages.
+ */
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React from "react";
+import { BrowserRouter, Routes, Route} from "react-router-dom";
+import Navbar from "./components/Navbar";
+import HomePage from "./pages/Home";
+import FAQPage from "./pages/FAQPage";
+import ContactsPage from "./pages/Contacts"
+import NotFoundPage from "./pages/NotFound";
+
+
+function App () {
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path = "/" element={<HomePage/>}/>
+                <Route path = "/faq" element = {<FAQPage/>}/>
+                <Route path = "/contacts" element = {<ContactsPage/>} />
+                <Route path = "*" element ={<NotFoundPage/>} />
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default App;

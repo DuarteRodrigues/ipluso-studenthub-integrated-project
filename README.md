@@ -1,7 +1,5 @@
 # StudentHub IPLuso
 
----
-
 ## Overview
 
 This project seeks to develop a digital on-line platform designed for the needs of the Instituto Politécnico da Lusofonia (IPLuso) with the goal of centralizing essential academic, administrative, and institutional information for the students and administrators. This project seeks to improve the communication flow and channels between all members of the academic community, providing streamlined access to services and relevant resources.
