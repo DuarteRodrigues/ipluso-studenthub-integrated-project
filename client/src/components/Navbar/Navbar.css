@@ -1,0 +1,25 @@
+nav {
+    justify-items: center;
+}
+
+.Links {
+    align-items: center;
+    display: flex;
+    gap: 0.8rem;
+}
+
+.Button {
+    background-color: #b0073b;
+    border-radius: 10rem;
+    cursor: pointer;
+}
+
+.Button:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2)
+}
+
+.Button a {
+    color: aliceblue;
+    padding: 0.5rem;
+    text-decoration: none;
+}

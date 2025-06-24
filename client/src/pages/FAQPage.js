@@ -1,10 +1,10 @@
 import React from "react";
-import Navbar from "../components/Navbar";
+import Header from "../components/Header/Header";
 
 export default function FAQPage() {
     return (
         <div>
-            <Navbar/>
+            <Header/>
             <h1>Frequently Asked Questions</h1>
             <p>Here you will find answers to common questions.</p>
         </div>
