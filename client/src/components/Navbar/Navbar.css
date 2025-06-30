@@ -11,16 +11,26 @@ nav {
 
 .Button {
   background-color: #b0073b;
+  border: 1px solid #b0073b;
   border-radius: 10rem;
   cursor: pointer;
+  transition: background 0.4s, color 0.4s, border-color 0.4s;
 }
 
 .Button:hover {
+  background-color: #fff;
+  border-color: #b0073b;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  color: #b0073b;
 }
 
 .Button a {
   color: aliceblue;
   padding: 0.5rem;
   text-decoration: none;
+  transition: color 0.4s;
+}
+
+.Button a:hover {
+  color: #b0073b;
 }

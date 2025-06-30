@@ -17,7 +17,7 @@ This folder contains reusable and global UI components used throughout my applic
 
 ## Usage
 
-Import components from this folder into your pages or other components as needed. 
+Import components from this folder into your pages or other components as needed.
 
 ## Example Structure
 
@@ -41,3 +41,27 @@ src/
 ```
 
 Keep this folder focused on UI building blocks to ensure consistency and maintainability across the application.
+
+## Implemented Components
+
+### Navbar
+
+- **Files:** `Navbar.jsx`, `Navbar.css`
+- **Description:** The main navigation bar for the application, includes navigation links and styled buttons with hover effects.
+
+### Header
+
+- **Files:** `Header.jsx`, `Header.css`
+- **Description:** The top section of the app, typically includes the logo and dropdown menus for navigation.
+
+### Footer
+
+- **Files:** `Footer.jsx`, `Footer.css`
+- **Description:** A simple footer that sits at the bottom of the page, ready for additional information or links.
+
+### TitleCard
+
+- **Files:** `TitleCard.jsx`, `TitleCard.css`
+- **Description:** A full-width image card with a centered, animated title and optional subtitle, featuring a color overlay for readability.
+
+---

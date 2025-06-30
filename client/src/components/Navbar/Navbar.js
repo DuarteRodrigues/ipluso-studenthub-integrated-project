@@ -17,6 +17,7 @@ import "./Navbar.css";
 // List of internal platform links
 const internalLinks = [
   { label: "Notícias", url: "/news" },
+  { label: "Eventos", url: "/events" },
   { label: "Estágios", url: "/internships" },
   { label: "Espaços", url: "/spaces" },
   { label: "FAQ", url: "/faq" },

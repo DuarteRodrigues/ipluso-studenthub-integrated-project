@@ -16,6 +16,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/Home";
 import FAQPage from "./pages/FAQPage";
 import ContactsPage from "./pages/Contacts";
+import EventsPage from "./pages/Events";
 import InternshipsPage from "./pages/Internships";
 import NewsPage from "./pages/News";
 import SpacesPage from "./pages/Spaces";
@@ -27,6 +28,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/contacts" element={<ContactsPage />} />
+        <Route path="/events" element={<EventsPage />} />
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/internships" element={<InternshipsPage />} />
         <Route path="/news" element={<NewsPage />} />

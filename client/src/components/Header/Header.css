@@ -39,10 +39,11 @@ img {
 }
 
 .Dropdown {
-  align-items: center;
   display: inline-block;
+  line-height: 2rem;
   position: relative;
   text-align: center;
+  vertical-align: middle;
 }
 
 .Dropdown:hover .DropdownContent {
