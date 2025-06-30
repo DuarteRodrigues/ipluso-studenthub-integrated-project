@@ -1,0 +1,34 @@
+.wrapper {
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 100vw;
+}
+
+.wrapper img {
+  display: block;
+  height: 800px; /* Adjust height as needed */
+  object-fit: cover;
+  width: 100%;
+}
+
+.title {
+  align-items: center;
+  background: rgba(176, 7, 59, 0.5);
+  color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.title h1 {
+  font-size: 3rem; /* Adjust font size as needed */
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+}

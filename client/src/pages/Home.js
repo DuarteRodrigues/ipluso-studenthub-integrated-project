@@ -10,16 +10,22 @@ import React from "react";
 
 // Import needed components
 import Header from "../components/Header/Header";
+import TitleCard from "../components/TitleCard/TitleCard";
 import Navbar from "../components/Navbar/Navbar";
-
+import Footer from "../components/Footer/Footer";
 
 export default function HomePage() {
-    return (
-        <div>
-            <Header/>
-            <h1>Welcome to StudentHub IPLuso</h1>
-            <p>This is the landing page.</p>
-            <Navbar/>
-        </div>
-    );
+  return (
+    <div>
+      <Header />
+      <TitleCard />
+      <Navbar />
+      <p>
+        This is the home page of the IPLuso StudentHub Integrated Project. Here
+        you can find information about the project, its objectives, and how to
+        get involved.
+      </p>
+      <Footer />
+    </div>
+  );
 }

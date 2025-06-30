@@ -8,30 +8,31 @@
  */
 
 //Import Packages
-import React from "react"
-import { Link } from "react-router-dom"
+import React from "react";
+import { Link } from "react-router-dom";
 
 // Importing Styles
-import "./Navbar.css"
+import "./Navbar.css";
 
 // List of internal platform links
 const internalLinks = [
-    {label: "News", url: "/news"},
-    {label: "Internships", url: "/internships"},
-    {label: "FAQ", url: "/faq"},
-    {label: "Contacts", url: "/contacts"},
-]
+  { label: "Notícias", url: "/news" },
+  { label: "Estágios", url: "/internships" },
+  { label: "Espaços", url: "/spaces" },
+  { label: "FAQ", url: "/faq" },
+  { label: "Contatos", url: "/contacts" },
+];
 
 export default function Navbar() {
-    return (
-        <nav className="Navbar">
-            <div className="Links">
-                {internalLinks.map(link =>(
-                    <div className = "Button">
-                        <Link to={link.url}>{link.label}</Link>
-                    </div>
-                ))}
-            </div>
-        </nav>
-    );
+  return (
+    <nav className="Navbar">
+      <div className="Links">
+        {internalLinks.map((link) => (
+          <div className="Button">
+            <Link to={link.url}>{link.label}</Link>
+          </div>
+        ))}
+      </div>
+    </nav>
+  );
 }
