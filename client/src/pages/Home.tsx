@@ -14,7 +14,26 @@ import TitleCard from "../components/TitleCard/TitleCard";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 
-export default function HomePage() {
+// Import Custom Hooks
+import useImagesLoaded from "../hooks/useImagesLoaded.tsx";
+
+//List all image URLs used on the Home page
+const imageUrls: string[] = [
+  require("../assets/images/Palácio_do_Conde_de_Vimioso.jpg"),
+  // Add more images if needed
+];
+
+function HomePage() {
+  const imagesLoaded = useImagesLoaded(imageUrls);
+
+  if (!imagesLoaded) {
+    return (
+      <div style={{ textAlign: "center", marginTop: "4rem" }}>
+        <p>Loading Images...</p>
+      </div>
+    );
+  }
+
   return (
     <div>
       <Header />
@@ -29,3 +48,5 @@ export default function HomePage() {
     </div>
   );
 }
+
+export default HomePage;

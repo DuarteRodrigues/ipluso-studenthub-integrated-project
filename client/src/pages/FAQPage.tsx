@@ -9,13 +9,28 @@
 // Import Packages
 import React from "react";
 import Header from "../components/Header/Header";
-import Question from "../features/FAQ/Question";
+import Question from "../features/FAQ/Question.tsx";
 import Footer from "../components/Footer/Footer";
+
+// Import Custom Hooks
+import useImagesLoaded from "../hooks/useImagesLoaded.tsx";
 
 // Import Styles
 import "../styles/FAQPage.css";
 
-const QuestionsAnswers = [
+// List all image URLs used in the FAQ page
+const imageUrls: string[] = [
+  require("../assets/images/Arrow.ico"),
+  // Add more images idf needed
+];
+
+// Define types
+type QA = {
+  question: string;
+  answer: string;
+};
+
+const QuestionsAnswers: QA[] = [
   {
     question: "O que é o StudentHub IPLuso?",
     answer:
@@ -68,7 +83,17 @@ const QuestionsAnswers = [
   },
 ];
 
-export default function FAQPage() {
+function FAQPage() {
+  const imagesLoaded = useImagesLoaded(imageUrls);
+
+  if (!imagesLoaded) {
+    return (
+      <div style={{ textAlign: "center", marginTop: "4rem" }}>
+        <p>Loading Images...</p>
+      </div>
+    );
+  }
+
   return (
     <div>
       <Header />
@@ -81,3 +106,5 @@ export default function FAQPage() {
     </div>
   );
 }
+
+export default FAQPage;

@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 
-export default function ContactsPage() {
+function ContactsPage() {
   return (
     <div>
       <Header />
@@ -12,3 +12,5 @@ export default function ContactsPage() {
     </div>
   );
 }
+
+export default ContactsPage;

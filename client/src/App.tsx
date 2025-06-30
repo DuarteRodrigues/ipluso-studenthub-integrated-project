@@ -1,5 +1,5 @@
 /**
- * @file App.js
+ * @file App.ts
  * @description Main application component for the IPLuso StudentHub Integrated Project.
  * Sets up the React Router for client-side navigation and renders the Navbar and page components.
  * Defines routes for Home, FAQ, Contacts, News, Internships, and NotFound pages.
@@ -13,14 +13,14 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Import needed Pages
-import HomePage from "./pages/Home";
-import FAQPage from "./pages/FAQPage";
-import ContactsPage from "./pages/Contacts";
-import EventsPage from "./pages/Events";
-import InternshipsPage from "./pages/Internships";
-import NewsPage from "./pages/News";
-import SpacesPage from "./pages/Spaces";
-import NotFoundPage from "./pages/NotFound";
+import HomePage from "./pages/Home.tsx";
+import FAQPage from "./pages/FAQPage.tsx";
+import ContactsPage from "./pages/Contacts.tsx";
+import EventsPage from "./pages/Events.tsx";
+import InternshipsPage from "./pages/Internships.tsx";
+import NewsPage from "./pages/News.tsx";
+import SpacesPage from "./pages/Spaces.tsx";
+import NotFoundPage from "./pages/NotFound.tsx";
 
 function App() {
   return (

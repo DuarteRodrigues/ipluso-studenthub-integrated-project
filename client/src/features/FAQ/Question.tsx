@@ -17,13 +17,23 @@ import arrowIcon from "../../assets/images/Arrow.ico";
 // Import Styles
 import "./Question.css";
 
+// Define the type for a single question and answer
+type QA = {
+  question: string;
+  answer: string;
+};
+
+type QuestionProps = {
+  questions: QA[];
+};
+
 // I wanted to create a component that displays a list of questions and answers in a collapsible format.
 // The details component does not allow for smooth transitions, so I decided to use divs with a toggle state.
 
-export default function Question({ questions }) {
-  const [openIndex, setOpenIndex] = useState(null);
+export default function Question({ questions }: QuestionProps) {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const toggle = (idx) => {
+  const toggle = (idx: number) => {
     setOpenIndex(openIndex === idx ? null : idx);
   };
 

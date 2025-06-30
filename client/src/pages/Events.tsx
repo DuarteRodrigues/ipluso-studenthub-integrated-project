@@ -13,7 +13,7 @@ import React from "react";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 
-export default function EventsPage() {
+function EventsPage() {
   return (
     <div>
       <Header />
@@ -27,3 +27,5 @@ export default function EventsPage() {
     </div>
   );
 }
+
+export default EventsPage;

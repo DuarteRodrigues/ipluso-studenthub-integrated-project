@@ -12,7 +12,7 @@ import React from "react";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 
-export default function SpacesPage() {
+function SpacesPage() {
   return (
     <div>
       <Header />
@@ -26,3 +26,5 @@ export default function SpacesPage() {
     </div>
   );
 }
+
+export default SpacesPage;
