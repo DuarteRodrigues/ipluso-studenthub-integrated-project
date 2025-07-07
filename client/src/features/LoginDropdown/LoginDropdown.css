@@ -1,0 +1,109 @@
+.LoginDropdownContent {
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    color: #222;
+    min-width: 260px;
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
+    position: absolute;
+    right: 0; top: 110%;
+    z-index: 100;
+}
+
+.LoginDropdownContent form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.InputGroup {
+  position: relative;
+}
+
+.LoginInput {
+    background: none;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    font-size: 1rem;
+    padding: 0.7rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+    width: 100%;
+}
+
+.LoginInput:focus {
+    border-color: #b0073b;
+}
+
+.LoginLabel {
+    background: #fff;
+    color: #888;
+    font-size: 1rem;
+    left: 0.6rem;
+    padding: 0 0.2rem;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.2s;
+}
+
+.LoginInput:focus + .LoginLabel,
+.LoginInput:not(:placeholder-shown) + .LoginLabel {
+    top: -0.5rem;
+    left: 0.5rem;
+    transform: none;
+    font-size: 0.75rem;
+    color: #b0073b;
+    background: #fff;
+}
+
+.EnterBtn {
+    background: #b0073b;
+    border: none;
+    border-radius: 0.5rem;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    padding: 0.7rem;
+    transition: background 0.2s;
+    width: 100%;
+}
+
+.EnterBtn:hover {
+    background: #a00632;
+}
+
+.RecoverLink {
+    align-self: flex-end;
+    color: #b0073b;
+    font-size: 0.95rem;
+    text-decoration: underline;
+}
+
+.LoginFooter {
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.7rem;
+    padding-top: 0.7rem;
+}
+
+.CookiesBtn {
+    background: transparent;
+    border: 1px solid #b0073b;
+    border-radius: 1rem;
+    color: #b0073b;
+    cursor: pointer;
+    font-size: 0.95rem;
+    padding: 0.4rem 1rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.CookiesBtn:hover {
+  background: #b0073b;
+  color: #fff;
+}

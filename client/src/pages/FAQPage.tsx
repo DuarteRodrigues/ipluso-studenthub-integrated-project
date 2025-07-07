@@ -8,7 +8,7 @@
 
 // Import Packages
 import React from "react";
-import Header from "../components/Header/Header";
+import Header from "../components/Header/Header.tsx";
 import Question from "../features/FAQ/Question.tsx";
 import Footer from "../components/Footer/Footer";
 

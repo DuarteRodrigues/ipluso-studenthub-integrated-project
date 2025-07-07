@@ -10,7 +10,7 @@
 import React from "react";
 
 // Import needed components
-import Header from "../components/Header/Header";
+import Header from "../components/Header/Header.tsx";
 import Footer from "../components/Footer/Footer";
 
 function InternshipsPage() {

@@ -1,11 +1,11 @@
 header {
-  align-items: stretch; /* Ensures children (like img) stretch to navbar height */
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
   background: #000;
   color: #fff;
-  display: flex;
-  height: 2rem;
-  justify-content: space-between;
   padding: 1rem;
+  min-height: 3rem;
 }
 
 header a {
@@ -14,15 +14,20 @@ header a {
 }
 
 img {
-  height: 100%;
+  height: 3rem;
   width: auto;
   display: block;
+}
+
+.HeaderLogo {
+  justify-self: start;
 }
 
 .studentHubLogo {
   color: #fff;
   display: flex;
   align-items: center;
+  justify-self: center;
 }
 
 .studentHubLogo img {
@@ -36,6 +41,22 @@ img {
   font-size: 2rem;
   font-style: italic;
   margin: 0;
+}
+
+.HeaderActions {
+    align-items: center;
+    display: flex;
+    justify-self: end;
+    gap: 1rem;
+}
+
+.LangSwitch {
+  background: transparent;
+  border: 1px solid #fff;
+  border-radius: 1rem;
+  color: #fff;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
 }
 
 .Dropdown {
@@ -80,6 +101,7 @@ img {
 }
 
 .DropdownContent a {
+  align-items: center;
   color: #fff;
   display: flex;
   gap: 0.5rem;
@@ -95,4 +117,33 @@ img {
 .DropdownContent img {
   height: 1.2rem;
   width: auto;
+}
+
+.LoginDropdown {
+    display: inline-block;
+    position: relative;
+}
+
+.LoginBtn {
+  background: #b0073b;
+  border: none;
+  border-radius: 0.25rem;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  padding: 0.5rem 1rem;
+  transition: background 0.3s, color 0.2s;
+}
+
+.LoginBtn:hover {
+  background: #a00632;
+  color: #fff;
+}
+
+.UserIcon {
+  border-radius: 50%;
+  cursor: pointer;
+  height: 2rem;
+  object-fit: cover;
+  width: 2rem;
 }
