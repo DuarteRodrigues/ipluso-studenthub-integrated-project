@@ -16,7 +16,14 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 
 // Import needed components
-import LoginDropdown from "../../features/LoginDropdown/LoginDropdown.tsx"
+import LoginDropdown from "../../features/LoginDropdown/LoginDropdown.tsx";
+import UserDropdown from "../../features/UserDropdown/UserDropdown.tsx";
+
+// Import Custom Hooks
+import useDropdown from "../../hooks/useDropdown.tsx";
+
+// Import Utilities
+import { setCookie, getCookie } from "../../utils/CookieManagement.tsx"
 
 //Import Assets
 import aeiplusoLogo from "../../assets/images/aeiplusoLogo.png"
@@ -46,17 +53,31 @@ const externalLinks: ExternalLink[] = [
 
 function Headers() {
 
-    const [isEnglish, setEnglish] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [showLoginDropdown, setShowLoginDropdown] = useState(false);
+    // Initialize state from cookie, default to PT
+    const [isEnglish, setEnglish] = useState(() => getCookie("language") === "en" ? true : false);
+    // Default: not logged in unless cookie says "true"
+    const [isLoggedIn, setIsLoggedIn] = useState(() => getCookie("loggedIn") === "true");
+    const [showLoginDropdown, toggleLoginDropdown, loginDropdownRef, closeLoginDropdown] = useDropdown<HTMLDivElement>();
+    const [showUserDropdown, toggleUserDropdown, userDropdownRef, closeUserDropdown] = useDropdown<HTMLDivElement>();
 
+    // When toggling language
     const handleLanguageToggle = () => {
-        setEnglish((prev) => !prev);
+        setEnglish( prev => {
+            const newLang = !prev ? "en" : "pt";
+            setCookie("language", newLang);
+            return !prev;
+        });
     };
 
     const handleLogin = () => {
         setIsLoggedIn(true);
+        setCookie("loggedIn", "true");
     };
+
+    const handleLogout = () => {
+        setIsLoggedIn(false);
+        setCookie("loggedIn", "false");
+    }
 
     // Todo: Implement page redirect on successful login to user page only if login is successful on home page
 
@@ -94,18 +115,25 @@ function Headers() {
                     </div>
                 </div>
                 {!isLoggedIn ? (
-                    <div className="LoginDropdown">
-                        <button className="LoginBtn" onClick={() => setShowLoginDropdown(v => !v)}>
+                    <div className="LoginDropdown" ref={loginDropdownRef}>
+                        <button className="LoginBtn" onClick={toggleLoginDropdown}>
                             Login
                         </button>
                         <LoginDropdown
                             show={showLoginDropdown}
-                            onClose={() => setShowLoginDropdown(false)}
-                            onLogin={() => setIsLoggedIn(true)}
+                            onClose={closeLoginDropdown}
+                            onLogin={handleLogin}
                         />
                     </div>
                 ): (
-                    <img src={userIcon} alt="User Icon" className="UserIcon"/>
+                    <div className="UserDropdown" ref={userDropdownRef}>
+                        <img src={userIcon} alt="User Icon" className="UserIcon" onClick = {toggleUserDropdown} tabIndex={0} role="button"/>
+                        <UserDropdown
+                            show={showUserDropdown}
+                            onClose={closeUserDropdown}
+                            onLogout={handleLogout}
+                        />
+                    </div>
                 )}
             </div>
         </header>

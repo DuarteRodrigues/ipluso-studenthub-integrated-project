@@ -7,7 +7,7 @@
  */
 
 // Import Packages
-import React, {useRef, useEffect} from "react";
+import React from "react";
 
 // Import Styles
 import "./LoginDropdown.css";
@@ -20,21 +20,6 @@ type LoginDropdownProps = {
 
 const LoginDropdown: React.FC<LoginDropdownProps> = ({show, onClose, onLogin}) => {
 
-    const dropdownRef = useRef<HTMLDivElement>(null);
-
-    // Hide dropdown when clicking outside
-    useEffect (() => {
-        function handleClickOutside(event: MouseEvent) {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-                onClose();
-            }
-        }
-        if (show) {
-            document.addEventListener("mousedown", handleClickOutside);
-        }
-        return () => document.removeEventListener("mousedown", handleClickOutside);
-    }, [show, onClose]);
-
     if (!show) return null;
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -44,7 +29,7 @@ const LoginDropdown: React.FC<LoginDropdownProps> = ({show, onClose, onLogin}) =
     }
 
     return (
-        <div className="LoginDropdownContent" ref={dropdownRef}>
+        <div className="LoginDropdownContent">
             <form onSubmit={handleSubmit}>
                 <div className="InputGroup">
                     <input
@@ -66,7 +51,6 @@ const LoginDropdown: React.FC<LoginDropdownProps> = ({show, onClose, onLogin}) =
                     />
                     <label htmlFor="loginPassword" className="LoginLabel">Password</label>
                 </div>
-
                 <button className="EnterBtn" type="submit">
                     Login
                 </button>

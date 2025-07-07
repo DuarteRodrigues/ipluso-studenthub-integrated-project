@@ -25,19 +25,19 @@ import NotFoundPage from "./pages/NotFound.tsx";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/contacts" element={<ContactsPage />} />
-        <Route path="/events" element={<EventsPage />} />
-        <Route path="/faq" element={<FAQPage />} />
-        <Route path="/internships" element={<InternshipsPage />} />
-        <Route path="/news" element={<NewsPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/spaces" element={<SpacesPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/contacts" element={<ContactsPage />} />
+          <Route path="/events" element={<EventsPage />} />
+          <Route path="/faq" element={<FAQPage />} />
+          <Route path="/internships" element={<InternshipsPage />} />
+          <Route path="/news" element={<NewsPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/spaces" element={<SpacesPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </BrowserRouter>
   );
 }
 
