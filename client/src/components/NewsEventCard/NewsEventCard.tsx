@@ -20,11 +20,18 @@ type NewsEventCardProps = {
     title: string;
     description: string;
     date: string;
+    type: "news" | "event"; // Type of the card, either news or event
 };
 
-const NewsEventCard: React.FC<NewsEventCardProps> = ({id, thumbnail, title, description, date}) => {
+const NewsEventCard: React.FC<NewsEventCardProps> = ({
+  id, thumbnail, title, description, date, type}) => {
+
+  const linkPath = type === "news" 
+  ? `/news/article/${id}` 
+  : `/events/article/${id}`;
+
   return (
-    <Link to={`/news/article/${id}`} className="NewsEventCardLink">
+    <Link to={linkPath} className="NewsEventCardLink">
         <div className = "NewsEventCard">
             <img src = {thumbnail} alt= {title} className="NewsEventThumb"/>
             <div className="NewsEventContent">

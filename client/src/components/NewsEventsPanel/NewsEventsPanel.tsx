@@ -38,6 +38,7 @@ const NewsEventsPanel:React.FC = () => {
                 <NewsEventCard
                     key={idx}
                     {...item}
+                    type="news"
                 />
             ))}
         </div>
@@ -50,6 +51,7 @@ const NewsEventsPanel:React.FC = () => {
                 <NewsEventCard
                     key={idx}
                     {...item}
+                    type="event"
                 />
             ))}
         </div>

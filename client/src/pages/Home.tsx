@@ -10,10 +10,7 @@ import React from "react";
 
 // Import needed components
 import Header from "../components/Header/Header.tsx";
-import TitleCard from "../components/TitleCard/TitleCard.tsx";
-import Navbar from "../components/Navbar/Navbar.tsx";
-import WelcomeMessage from "../components/WelcomeMessage/WelcomeMessage.tsx";
-import NewsEventsPanel from "../components/NewsEventsPanel/NewsEventsPanel.tsx";
+import HomeLayout from "../layouts/HomeLayout.tsx";
 import Footer from "../components/Footer/Footer.tsx";
 
 // Import Custom Hooks
@@ -51,15 +48,12 @@ function HomePage() {
     );
   }
 
-  // Todo: Display the 3 most recent news and events side by side (they can be hardcoded for the sake of testing)
-
   return (
-    <div>
+    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <Header />
-      <TitleCard />
-      <Navbar />
-      <WelcomeMessage />
-      <NewsEventsPanel />
+      <div style={{ flex: "1"}}>
+        <HomeLayout />
+      </div>
       <Footer />
     </div>
   );

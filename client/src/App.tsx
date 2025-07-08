@@ -20,6 +20,7 @@ import EventsPage from "./pages/Events.tsx";
 import InternshipsPage from "./pages/Internships.tsx";
 import NewsPage from "./pages/News.tsx";
 import NewsArticlePage from "./pages/NewsArticle.tsx"; 
+import EventArticlePage from "./pages/EventArticle.tsx";
 import ProfilePage from "./pages/Profile.tsx";
 import SpacesPage from "./pages/Spaces.tsx";
 import NotFoundPage from "./pages/NotFound.tsx";
@@ -35,6 +36,7 @@ function App() {
           <Route path="/internships" element={<InternshipsPage />} />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/news/article/:id" element={<NewsArticlePage />} />
+          <Route path="/events/article/:id" element={<EventArticlePage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/spaces" element={<SpacesPage />} />
           <Route path="*" element={<NotFoundPage />} />
