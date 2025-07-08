@@ -1,0 +1,14 @@
+.WelcomeMessage {
+    align-items: center;;
+    background: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 2rem;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.WelcomeMessage p {
+    text-align: center;
+}

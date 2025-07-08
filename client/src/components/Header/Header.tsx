@@ -13,7 +13,7 @@
 //Import Packages
 import React from "react"
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate} from "react-router-dom"
 
 // Import needed components
 import LoginDropdown from "../../features/LoginDropdown/LoginDropdown.tsx";
@@ -57,8 +57,10 @@ function Headers() {
     const [isEnglish, setEnglish] = useState(() => getCookie("language") === "en" ? true : false);
     // Default: not logged in unless cookie says "true"
     const [isLoggedIn, setIsLoggedIn] = useState(() => getCookie("loggedIn") === "true");
+    const [loginError, setLoginError] = useState<string>("");
     const [showLoginDropdown, toggleLoginDropdown, loginDropdownRef, closeLoginDropdown] = useDropdown<HTMLDivElement>();
     const [showUserDropdown, toggleUserDropdown, userDropdownRef, closeUserDropdown] = useDropdown<HTMLDivElement>();
+    const navigate = useNavigate();
 
     // When toggling language
     const handleLanguageToggle = () => {
@@ -69,14 +71,26 @@ function Headers() {
         });
     };
 
-    const handleLogin = () => {
-        setIsLoggedIn(true);
-        setCookie("loggedIn", "true");
+    const handleLogin = (username: string, password: string) => {
+        // Hardcoded credentials
+        if (username === "student" && password === "hub2024") {
+            setIsLoggedIn(true);
+            setCookie("loggedIn", "true");
+            setLoginError("");
+            closeLoginDropdown();
+            // Redirect to profile if on home page
+            if (window.location.pathname === "/") {
+                navigate("/profile");
+            }
+        } else {
+            setLoginError("Invalid username and password.");
+        }
     };
 
     const handleLogout = () => {
         setIsLoggedIn(false);
         setCookie("loggedIn", "false");
+        navigate("/"); //Redirect to main page after logout
     }
 
     // Todo: Implement page redirect on successful login to user page only if login is successful on home page
@@ -123,6 +137,7 @@ function Headers() {
                             show={showLoginDropdown}
                             onClose={closeLoginDropdown}
                             onLogin={handleLogin}
+                            error={loginError}
                         />
                     </div>
                 ): (

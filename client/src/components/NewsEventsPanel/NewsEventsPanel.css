@@ -1,0 +1,38 @@
+.NewsEventsPanel {
+    display: grid;
+    gap: 2.5rem;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    margin: 2rem 0;
+    padding: 0 10%;
+}
+
+.NewsEventsColumn {
+    display: flex;
+    flex-direction: column;
+    max-width: auto;
+    min-width: 260px;
+}
+
+.NewsEventsHeader {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.NewsEventsHeader h3 {
+    color: #b0073b;
+    margin: 0;
+}
+
+.NewsEventsMore {
+  color: #b0073b;
+  text-decoration: underline;
+  font-size: 0.98rem;
+  transition: color 0.2s;
+}
+
+.NewsEventsMore:hover {
+  color: #222;
+}

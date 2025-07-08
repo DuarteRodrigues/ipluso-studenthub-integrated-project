@@ -7,7 +7,7 @@
  */
 
 // Import Packages
-import React from "react";
+import React, { useState } from "react";
 
 // Import Styles
 import "./LoginDropdown.css";
@@ -15,17 +15,19 @@ import "./LoginDropdown.css";
 type LoginDropdownProps = {
     show: boolean;
     onClose: () => void;
-    onLogin: () => void;
+    onLogin: (username: string, password: string) => void;
+    error?: string;
 };
 
-const LoginDropdown: React.FC<LoginDropdownProps> = ({show, onClose, onLogin}) => {
+const LoginDropdown: React.FC<LoginDropdownProps> = ({show, onClose, onLogin, error}) => {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
     if (!show) return null;
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        onLogin();
-        onClose();
+        onLogin(username, password);
     }
 
     return (
@@ -37,6 +39,8 @@ const LoginDropdown: React.FC<LoginDropdownProps> = ({show, onClose, onLogin}) =
                         id="login-username"
                         placeholder=" "
                         className="LoginInput"
+                        value={username}
+                        onChange={e => setUsername(e.target.value)}
                         required
                     />
                     <label htmlFor="login-username" className="LoginLabel">Username</label>
@@ -47,15 +51,18 @@ const LoginDropdown: React.FC<LoginDropdownProps> = ({show, onClose, onLogin}) =
                         id="login-password"
                         placeholder=" "
                         className="LoginInput"
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
                         required
                     />
                     <label htmlFor="loginPassword" className="LoginLabel">Password</label>
                 </div>
+                {error && <div className="LoginError">{error}</div>}
                 <button className="EnterBtn" type="submit">
                     Login
                 </button>
-                <a href="#" className="RecoverLink">
-                    Recover password
+                <a href="https://secure.ensinolusofona.pt/alteracao_password/f?p=133:2::::::" className="RecoverLink">
+                    Recuperar password
                 </a>
                 <div className="LoginFooter">
                     <button

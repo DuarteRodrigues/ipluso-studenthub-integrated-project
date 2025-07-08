@@ -1,0 +1,58 @@
+.NewsEventCard {
+    align-items: flex-start;
+    background: #fff;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    display: flex;
+    margin-bottom: 1.2rem;
+    min-height: 110px;
+    padding: 1rem;
+    position: relative;
+}
+
+.NewsEventThumb {
+    border-radius: 0.5rem;
+    height: 70px;
+    margin-right: 1rem;
+    object-fit: cover;
+    width: 70px;
+}
+
+.NewsEventContent {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    height: 100%;
+    min-width: 0;
+}
+
+.NewsEventTitle {
+    color: #b0073b;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0 0 0.3rem 0;
+    overflow: hidden;
+    padding: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.NewsEventDesc {
+    color: #222;
+    font-size: 0.98rem;
+    line-height: 1.35rem;
+    margin: 0;
+    max-height: 2.7rem;
+    overflow: hidden;
+    position: relative;
+    /* Fade out Effect */
+    mask-image: linear-gradient(180deg, #000 60%, transparent 100%);
+    -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent 100%);
+}
+
+.NewsEventDate {
+    align-self: flex-end;
+    color: #888;
+    font-size: 0.85rem;
+    margin-top: auto;
+}

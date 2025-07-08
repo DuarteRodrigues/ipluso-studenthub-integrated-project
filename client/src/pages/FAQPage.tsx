@@ -10,7 +10,7 @@
 import React from "react";
 import Header from "../components/Header/Header.tsx";
 import Question from "../features/FAQ/Question.tsx";
-import Footer from "../components/Footer/Footer";
+import Footer from "../components/Footer/Footer.tsx";
 
 // Import Custom Hooks
 import useImagesLoaded from "../hooks/useImagesLoaded.tsx";

@@ -11,7 +11,7 @@ import React from "react";
 
 // Importing Components
 import Header from "../components/Header/Header.tsx";
-import Footer from "../components/Footer/Footer";
+import Footer from "../components/Footer/Footer.tsx";
 
 function EventsPage() {
   return (

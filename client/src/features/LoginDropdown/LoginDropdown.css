@@ -59,6 +59,13 @@
     background: #fff;
 }
 
+.LoginError {
+    color: #b0073b;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
 .EnterBtn {
     background: #b0073b;
     border: none;
