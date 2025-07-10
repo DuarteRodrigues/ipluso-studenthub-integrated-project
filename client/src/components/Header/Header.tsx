@@ -71,21 +71,41 @@ function Headers() {
         });
     };
 
-    const handleLogin = (username: string, password: string) => {
-        // Hardcoded credentials
-        if (username === "student" && password === "hub2024") {
-            setIsLoggedIn(true);
-            setCookie("loggedIn", "true");
-            setLoginError("");
-            closeLoginDropdown();
-            // Redirect to profile if on home page
-            if (window.location.pathname === "/") {
-                navigate("/profile");
-            }
-        } else {
-            setLoginError("Invalid username and password.");
+    const handleLogin = async (username: string, password: string) => {
+        console.log("[Login] Attempting login with:", username);
+        try {
+            const response = await fetch("http://localhost:5000/auth/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ username, password }),
+        });
+
+        console.log("[Login] Response status:", response.status);
+
+        if(!response.ok) {
+            const data = await response.json();
+            console.error("[Login] Login failed:", data);
+            setLoginError(data.message || "Erro ao autenticar.");
+            return;
         }
-    };
+        
+        console.log("[Login] Login successful for:", username);
+        setIsLoggedIn(true);
+        setCookie("loggedIn", "true");
+        setLoginError("");
+        closeLoginDropdown();
+        // Redirect to profile if on home page
+        if (window.location.pathname === "/") {
+            console.log("[Login] Redirecting to profile page after login.");
+            navigate("/profile");
+        }
+    } catch (error) {
+        console.error("[Login] Network or server error:", error);
+        setLoginError("Erro ao autenticar. Por favor, tente novamente.");
+    }
+};
 
     const handleLogout = () => {
         setIsLoggedIn(false);

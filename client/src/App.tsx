@@ -25,9 +25,18 @@ import ProfilePage from "./pages/Profile.tsx";
 import SpacesPage from "./pages/Spaces.tsx";
 import NotFoundPage from "./pages/NotFound.tsx";
 
+// Import Components
+import CookieConsent from "./components/CookieConsent/CookieConsent.tsx";
+
+// Import Utilities
+import ProtectedRoute from "./utils/ProtectedRoute.tsx";
+
 function App() {
   return (
       <BrowserRouter>
+        <CookieConsent />
+        
+        {/* Define the main routes for the application */}
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/contacts" element={<ContactsPage />} />
@@ -37,7 +46,14 @@ function App() {
           <Route path="/news" element={<NewsPage />} />
           <Route path="/news/article/:id" element={<NewsArticlePage />} />
           <Route path="/events/article/:id" element={<EventArticlePage />} />
-          <Route path="/profile" element={<ProfilePage />} />
+          <Route 
+            path="/profile" 
+            element={
+              <ProtectedRoute>
+                <ProfilePage />
+              </ProtectedRoute>
+            } 
+          />
           <Route path="/spaces" element={<SpacesPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

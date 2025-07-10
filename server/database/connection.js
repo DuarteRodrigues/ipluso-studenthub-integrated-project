@@ -22,6 +22,6 @@ try {
 
 // * This will connect to the database and create it if it doesn't exist
 // * The database name is "StudentHub"
-let db = client.db("StudentHub");
+let db = client.db("student_hub");
 
 export default db;
