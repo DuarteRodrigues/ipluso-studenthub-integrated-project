@@ -8,13 +8,20 @@
     margin: 2rem 0;
 }
 
-.SpacePanelTitle {
-    text-align: center;
-    font-size: 3rem;
-    margin-bottom: 0.2rem;
+.SpacePanelHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.SpacePanelHeader h2 {
     color: #b0073b;
+    font-size: 3rem;
     font-style: italic;
-    width: 100%;
+    margin-bottom: 0.2rem;
+    margin-top: 0;
 }
 
 .SpaceCard {

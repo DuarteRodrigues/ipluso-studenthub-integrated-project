@@ -46,8 +46,15 @@ const SpacePanel:React.FC = () => {
     const navigate = useNavigate();
 
   return (
-    <div className = "SpacePanel">
+    <>
+    <div className="SpacePanelHeader">
         <h2 className="SpacePanelTitle">Espaços</h2>
+        <div style={{ color: "#666", marginBottom: "1.5rem", fontSize: "1.05rem", width: "100%", textAlign: "center" }}>
+            Descubra os nossos campus e as suas principais valências
+        </div>
+    </div>
+
+    <div className = "SpacePanel">
         {spaces.map((space) => (
             <div 
                 key = {space.name} 
@@ -71,6 +78,7 @@ const SpacePanel:React.FC = () => {
         ))}
 
     </div>
+    </>
   );
 };
 
