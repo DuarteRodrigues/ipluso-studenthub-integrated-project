@@ -1,0 +1,50 @@
+.NewsLayout {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 2rem 1rem;
+}
+
+.NewsLayout h1 {
+    font-style: italic;
+}
+
+.NewsSubtitle {
+    color: #888;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.NewsTagsBar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.NewsTagBtn {
+    background: #eee;
+    border: none;
+    border-radius: 1.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.5rem 1.2rem;
+    transition: background 0.3s ease;
+}
+
+.NewsTagBtn.active,
+.NewsTagBtn:hover {
+  background: #b0073b;
+  color: #fff;
+}
+
+.NewsResultsCount {
+  margin-bottom: 1rem;
+  color: #333;
+  font-size: 1rem;
+}
+
+.NewsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}

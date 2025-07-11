@@ -28,34 +28,42 @@ const sortedEvents = sortMostRecent(events).slice(0, 3); // Get the 3 most recen
 
 const NewsEventsPanel:React.FC = () => {
   return (
-    <div className="NewsEventsPanel">
-        <div className="NewsEventsColumn">
-            <div className="NewsEventsHeader">
-                <h3>Notícias</h3>
-                <a href="/news" className="NewsEventsMore">Ver Mais</a>
+    <>
+        <div className="NewsEventsPanelHeader">
+            <h2 >Notícias e Eventos</h2>
+            <div style={{ color: "#666", marginBottom: "1.5rem", fontSize: "1.05rem" }}>
+                Aqui estão as nossas notícias e eventos mais recentes!
             </div>
-            {sortedNews.map((item, idx) => (
-                <NewsEventCard
-                    key={idx}
-                    {...item}
-                    type="news"
-                />
-            ))}
         </div>
-        <div className="NewsEventsColumn">
-            <div className="NewsEventsHeader">
-                <h3>Eventos</h3>
-                <a href="/events" className="NewsEventsMore">Ver Mais</a>
+        <div className="NewsEventsPanel">
+            <div className="NewsEventsColumn">
+                <div className="NewsEventsHeader">
+                    <h3>Notícias</h3>
+                    <a href="/news" className="NewsEventsMore">Ver Mais</a>
+                </div>
+                {sortedNews.map((item, idx) => (
+                    <NewsEventCard
+                        key={idx}
+                        {...item}
+                        type="news"
+                    />
+                ))}
             </div>
-            {sortedEvents.map((item, idx) => (
-                <NewsEventCard
-                    key={idx}
-                    {...item}
-                    type="event"
-                />
-            ))}
+            <div className="NewsEventsColumn">
+                <div className="NewsEventsHeader">
+                    <h3>Eventos</h3>
+                    <a href="/events" className="NewsEventsMore">Ver Mais</a>
+            </div>
+                {sortedEvents.map((item, idx) => (
+                    <NewsEventCard
+                        key={idx}
+                        {...item}
+                        type="event"
+                    />
+                ))}
+            </div>
         </div>
-    </div>
+    </>
   );
 };
 

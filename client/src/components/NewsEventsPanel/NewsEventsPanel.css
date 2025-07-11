@@ -7,6 +7,21 @@
     padding: 0 10%;
 }
 
+.NewsEventsPanelHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.NewsEventsPanelHeader h2 {
+    color: #b0073b;
+    font-size: 2rem;
+    font-style: italic;
+    margin-bottom: 0.2rem;
+}
+
 .NewsEventsColumn {
     display: flex;
     flex-direction: column;
@@ -17,6 +32,7 @@
 .NewsEventsHeader {
     align-items: center;
     display: flex;
+    font-style: italic;
     justify-content: space-between;
     margin-bottom: 1rem;
 }

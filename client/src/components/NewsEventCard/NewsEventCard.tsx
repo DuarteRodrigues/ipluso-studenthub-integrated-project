@@ -15,7 +15,7 @@ import "./NewsEventCard.css";
 
 // Declare types for props
 type NewsEventCardProps = {
-    id: string; // Unique identifier for the news or event
+    articleId: string; // Unique identifier for the news or event
     thumbnail: string;
     title: string;
     description: string;
@@ -24,11 +24,11 @@ type NewsEventCardProps = {
 };
 
 const NewsEventCard: React.FC<NewsEventCardProps> = ({
-  id, thumbnail, title, description, date, type}) => {
+  articleId, thumbnail, title, description, date, type}) => {
 
   const linkPath = type === "news" 
-  ? `/news/article/${id}` 
-  : `/events/article/${id}`;
+  ? `/news/article/${articleId}` 
+  : `/events/article/${articleId}`;
 
   return (
     <Link to={linkPath} className="NewsEventCardLink">

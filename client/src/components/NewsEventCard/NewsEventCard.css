@@ -27,9 +27,8 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    height: 100%;
     min-width: 0;
-    position: relative;
+    height: 100%;
 }
 
 .NewsEventTitle {
@@ -57,9 +56,14 @@
 }
 
 .NewsEventDate {
-    align-self: flex-end;;
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
     color: #888;
     font-size: 0.85rem;
-    margin-top: auto;
-    position: absolute;
+    background: #fff;
+    padding: 0 0.3rem;
+    border-radius: 0.25rem;
+    z-index: 1;
+    margin: 0;
 }

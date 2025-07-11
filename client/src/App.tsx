@@ -11,6 +11,7 @@
 // Import Packages
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 // Import needed Pages
 import HomePage from "./pages/Home.tsx";
@@ -33,9 +34,9 @@ import ProtectedRoute from "./utils/ProtectedRoute.tsx";
 
 function App() {
   return (
+    <QueryClientProvider client={new QueryClient()}>
       <BrowserRouter>
         <CookieConsent />
-        
         {/* Define the main routes for the application */}
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -58,6 +59,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 

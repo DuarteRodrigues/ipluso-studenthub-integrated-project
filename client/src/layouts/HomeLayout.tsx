@@ -17,12 +17,12 @@ import NewsEventsPanel from '../components/NewsEventsPanel/NewsEventsPanel.tsx';
 
 const HomeLayout = () => {
   return (
-    <div>      
+    <>      
         <TitleCard />
         <Navbar />
         <WelcomeMessage />
         <NewsEventsPanel />
-    </div>
+    </>
   );
 };
 

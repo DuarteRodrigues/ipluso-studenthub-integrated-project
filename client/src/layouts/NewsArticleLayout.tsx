@@ -8,11 +8,15 @@
 
 // Import Packages
 import React from 'react';
+import { useParams } from 'react-router-dom';
+
+// Import Styles
+import '../styles/NewsArticleLayout.css';
 
 // Define NewsArticleLayout types
 type NewsArticleLayoutProps = {
     article: {
-        id: number;
+        _id: number;
         thumbnail: string;
         title: string;
         content: string;
