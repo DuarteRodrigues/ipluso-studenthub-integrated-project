@@ -10,6 +10,7 @@
 
 // Import Packages
 import React, { useState, useEffect, useRef } from 'react';
+import { useQuery } from '@tanstack/react-query';
 
 // Import Components
 import NewsEventCard from '../components/NewsEventCard/NewsEventCard.tsx';
@@ -21,36 +22,39 @@ import { sortMostRecent } from '../utils/articleManipulation.tsx';
 import '../styles/NewsLayout.css';
 
 const TAGS = ["EET", "ECIA", "ESCAD", "ESEL", "ESPA", "ERISA"];
+const apiURL = process.env.REACT_APP_API_URL;
 const PAGE_SIZE = 20;
 
+// Fetch news from backend
+const fetchNews = async () => {
+    const res = await fetch(`${apiURL}/news`);
+    if (!res.ok) {
+        throw new Error("Failed to fetch news");
+    }
+    return res.json();
+}; 
+
 const NewsLayout: React.FC = () => {
-    const [newsData, setNewsData] = useState<any[]>([]);
+
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
     const [visibleCount, setVisibleCount] = useState(PAGE_SIZE); // Number of news articles to show initially
     const [loading, setLoading] = useState(false);
     const prevFilteredNewsLength = useRef(0);
 
-    useEffect(() => {
-        console.log("[News] Fetching news data...");
-        fetch("http://localhost:5000/news")
-            .then(res => {
-                console.log("Fetch response status:", res.status)
-                return res.json();
-            })
-            .then(data => {setNewsData(sortMostRecent(data))
-                console.log("[News] Data fetched successfully:", data.length, "articles");
-                setNewsData(sortMostRecent(data));
-            })
-            .catch((err) => {
-                console.error("Error fetching news data:", err);
-                setNewsData([]);
-            });
-    }, []);
+    const { data: newsData = [], isLoading: newsLoading, error: newsError } = useQuery({
+        queryKey: ['news'],
+        queryFn: fetchNews,
+        staleTime: 1000 * 60 * 2, // 2 minutes
+        refetchOnWindowFocus: true // (Default, but explicit for clarity)
+    });
+
+    // Sort news articles by most recent
+    const sortedNews = sortMostRecent(newsData); // Get the 3 most recent news
 
     // Filter news: show all if no tag selected, else show those with at least one selected tag
     const filteredNews = selectedTags.length === 0
-        ? newsData
-        : newsData.filter(article =>
+        ? sortedNews
+        : sortedNews.filter(article =>
             article.tags && selectedTags.every(tag => article.tags.includes(tag))
     );
 
@@ -70,7 +74,7 @@ const NewsLayout: React.FC = () => {
                 setTimeout(() => {
                     setVisibleCount(v => Math.min(v + PAGE_SIZE, filteredNews.length));
                     setLoading(false);
-                }, 1000) // 1 second delay to simulate loading
+                }, 1000); // 1 second delay to simulate loading
                 
             }
         };
@@ -101,35 +105,37 @@ const NewsLayout: React.FC = () => {
             <h2 className="NewsSubtitle">Esta é a página de notícias</h2>
             <div className="NewsTagsBar">
                 {TAGS.map(tag => (
+                    <button
+                        key={tag}
+                        className={selectedTags.includes(tag) ? "NewsTagBtn active" : "NewsTagBtn"}
+                        onClick={() => toggleTag(tag)}
+                    >
+                    {tag}
+                    </button>
+                ))}
                 <button
-                    key={tag}
-                    className={selectedTags.includes(tag) ? "NewsTagBtn active" : "NewsTagBtn"}
-                    onClick={() => toggleTag(tag)}
+                    className={selectedTags.length === 0 ? "NewsTagBtn active" : "NewsTagBtn"}
+                    onClick={() => setSelectedTags([])}
                 >
-                {tag}
+                Todas
                 </button>
-            ))}
-            <button
-                className={selectedTags.length === 0 ? "NewsTagBtn active" : "NewsTagBtn"}
-            onClick={() => setSelectedTags([])}
-            >
-            Todas
-            </button>
+            </div>
+            <div className="NewsResultsCount">
+                {filteredNews.length} notícia{filteredNews.length !== 1 ? "s" : ""} encontrada{filteredNews.length !== 1 ? "s" : ""}
+            </div>
+            {newsLoading && <div>A carregar notícias...</div>}
+            {newsError && <div>Erro ao carregar notícias.</div>}
+            <div className="NewsGrid">
+                {filteredNews.map(article => (
+                    <NewsEventCard
+                        key={article._id}
+                        {...article}
+                        type="news"
+                        articleId = {article._id}
+                    />
+                ))}
+            </div>
         </div>
-        <div className="NewsResultsCount">
-            {filteredNews.length} notícia{filteredNews.length !== 1 ? "s" : ""} encontrada{filteredNews.length !== 1 ? "s" : ""}
-        </div>
-        <div className="NewsGrid">
-            {filteredNews.map(article => (
-                <NewsEventCard
-                key={article._id}
-                {...article}
-                type="news"
-                articleId = {article._id}
-            />
-            ))}
-        </div>
-    </div>
     );
 };
 

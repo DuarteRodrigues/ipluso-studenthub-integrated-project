@@ -3,8 +3,9 @@
     gap: 2.5rem;
     grid-template-columns: 1fr 1fr;
     justify-content: center;
-    margin: 2rem 0;
-    padding: 0 10%;
+    max-width: 1200px; /* or any value you prefer */
+    margin: 2rem auto;
+    padding: 0 2rem;
 }
 
 .NewsEventsPanelHeader {
@@ -17,9 +18,10 @@
 
 .NewsEventsPanelHeader h2 {
     color: #b0073b;
-    font-size: 2rem;
+    font-size: 3rem;
     font-style: italic;
     margin-bottom: 0.2rem;
+    margin-top: 0;
 }
 
 .NewsEventsColumn {

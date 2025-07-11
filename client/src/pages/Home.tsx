@@ -24,6 +24,8 @@ import LusofonaVectorImg from "../assets/images/lusofona_vector.png";
 import MoodleLogoImg from "../assets/images/moodle-logo.png";
 import NetpaLogoImg from "../assets/images/netpa-logo.png";
 import AeiplusoLogoImg from "../assets/images/aeiplusoLogo.png";
+import CampusCG from "../assets/images/Campus-Campo-Grande.jpg";
+import CampusBP from "../assets/images/Campus-Braco-Prata.jpg";
 
 //List all image URLs used on the Home page
 const imageUrls: string[] = [
@@ -34,6 +36,8 @@ const imageUrls: string[] = [
   MoodleLogoImg,
   NetpaLogoImg,
   AeiplusoLogoImg,
+  CampusCG,
+  CampusBP,
   // Add more images if needed
 ];
 

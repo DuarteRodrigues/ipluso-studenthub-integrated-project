@@ -10,9 +10,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-// Import needed Data
-import events from '../utils/EventsTestData.tsx';
-
 // Import Components
 import Headers from '../components/Header/Header.tsx';
 import EventArticleLayout from '../layouts/EventArticleLayout.tsx';

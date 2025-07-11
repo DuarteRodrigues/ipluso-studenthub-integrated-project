@@ -1,7 +1,7 @@
 // Import Packages
 import React from "react";
 
-// Import needed layouts
+// Import needed Layout
 import NewsLayout from "../layouts/NewsLayout.tsx";
 
 // Import needed components

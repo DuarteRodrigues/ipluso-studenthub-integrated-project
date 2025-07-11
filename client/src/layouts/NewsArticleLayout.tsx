@@ -8,7 +8,6 @@
 
 // Import Packages
 import React from 'react';
-import { useParams } from 'react-router-dom';
 
 // Import Styles
 import '../styles/NewsArticleLayout.css';

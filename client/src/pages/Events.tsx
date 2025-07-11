@@ -9,20 +9,20 @@
 // Import Packages
 import React from "react";
 
+// Import needed Layout
+import EventsLayout from "../layouts/EventsLayout.tsx";
+
 // Importing Components
 import Header from "../components/Header/Header.tsx";
 import Footer from "../components/Footer/Footer.tsx";
 
 function EventsPage() {
   return (
-    <div>
+    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <Header />
-      <h1>Eventos</h1>
-      <p>
-        Esta página contém uma lista de eventos relacionados ao projeto IPLuso
-        StudentHub. Aqui você pode encontrar informações sobre eventos passados
-        e futuros, como datas, locais e descrições.
-      </p>
+        <div style={{ flex: "1" }}>
+          <EventsLayout />
+        </div>
       <Footer />
     </div>
   );
