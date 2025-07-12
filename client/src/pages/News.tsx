@@ -1,3 +1,11 @@
+/**
+ * @file News.tsx
+ * @description This file contains the News page component, which displays a list of news articles.
+ * 
+ * @page News
+ * @returns {JSX.Element} The rendered News page component.
+ */
+
 // Import Packages
 import React from "react";
 

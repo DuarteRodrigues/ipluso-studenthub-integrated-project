@@ -22,6 +22,9 @@ import UserDropdown from "../../features/UserDropdown/UserDropdown.tsx";
 // Import Custom Hooks
 import useDropdown from "../../hooks/useDropdown.tsx";
 
+// Importing Contexts
+import { useUser } from "../../store/UserContext.tsx";
+
 // Import Utilities
 import { setCookie, getCookie } from "../../utils/CookieManagement.tsx"
 
@@ -36,6 +39,9 @@ import userIcon from "../../assets/images/user.png"
 
 // Importing Styles
 import "./Header.css"
+
+// Define the API URL from environment variables
+const apiURL = process.env.REACT_APP_API_URL;
 
 type ExternalLink = {
     label: string;
@@ -61,6 +67,7 @@ function Headers() {
     const [showLoginDropdown, toggleLoginDropdown, loginDropdownRef, closeLoginDropdown] = useDropdown<HTMLDivElement>();
     const [showUserDropdown, toggleUserDropdown, userDropdownRef, closeUserDropdown] = useDropdown<HTMLDivElement>();
     const navigate = useNavigate();
+    const { setUser } = useUser();
 
     // When toggling language
     const handleLanguageToggle = () => {
@@ -74,42 +81,46 @@ function Headers() {
     const handleLogin = async (username: string, password: string) => {
         console.log("[Login] Attempting login with:", username);
         try {
-            const response = await fetch("http://localhost:5000/auth/login", {
+            const response = await fetch(`${apiURL}/auth/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({ username, password }),
-        });
+            });
 
-        console.log("[Login] Response status:", response.status);
+            console.log("[Login] Response status:", response.status);
 
-        if(!response.ok) {
+            if(!response.ok) {
+                const data = await response.json();
+                console.error("[Login] Login failed:", data);
+                setLoginError(data.message || "Erro ao autenticar.");
+                return;
+            }
+            
             const data = await response.json();
-            console.error("[Login] Login failed:", data);
-            setLoginError(data.message || "Erro ao autenticar.");
-            return;
+            console.log("[Login] Login successful for:", username);
+            setIsLoggedIn(true);
+            setCookie("loggedIn", "true");
+            setLoginError("");
+            setUser({userId: data.userId, username: data.username}); // Set user in global context
+            closeLoginDropdown();
+            
+            // Redirect to profile if on home page
+            if (window.location.pathname === "/") {
+                console.log("[Login] Redirecting to profile page after login.");
+                navigate("/profile");
+            }
+        } catch (error) {
+            console.error("[Login] Network or server error:", error);
+            setLoginError("Erro ao autenticar. Por favor, tente novamente.");
         }
-        
-        console.log("[Login] Login successful for:", username);
-        setIsLoggedIn(true);
-        setCookie("loggedIn", "true");
-        setLoginError("");
-        closeLoginDropdown();
-        // Redirect to profile if on home page
-        if (window.location.pathname === "/") {
-            console.log("[Login] Redirecting to profile page after login.");
-            navigate("/profile");
-        }
-    } catch (error) {
-        console.error("[Login] Network or server error:", error);
-        setLoginError("Erro ao autenticar. Por favor, tente novamente.");
-    }
-};
+    };
 
     const handleLogout = () => {
         setIsLoggedIn(false);
         setCookie("loggedIn", "false");
+        setUser(null); // Clear user context
         navigate("/"); //Redirect to main page after logout
     }
 

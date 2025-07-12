@@ -29,38 +29,44 @@ import NotFoundPage from "./pages/NotFound.tsx";
 // Import Components
 import CookieConsent from "./components/CookieConsent/CookieConsent.tsx";
 
+// Import Contexts
+import { UserProvider } from "./store/UserContext.tsx";
+
 // Import Utilities
 import ProtectedRoute from "./utils/ProtectedRoute.tsx";
+
 
 function App() {
   return (
     <QueryClientProvider client={new QueryClient()}>
+      <UserProvider>
       <BrowserRouter>
         <CookieConsent />
         {/* Define the main routes for the application */}
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/contacts" element={<ContactsPage />} />
-          <Route path="/events" element={<EventsPage />} />
-          <Route path="/faq" element={<FAQPage />} />
-          <Route path="/internships" element={<InternshipsPage />} />
-          <Route path="/news" element={<NewsPage />} />
-          <Route path="/news/article/:id" element={<NewsArticlePage />} />
-          <Route path="/events/article/:id" element={<EventArticlePage />} />
-          <Route 
-            path="/profile" 
-            element={
-              <ProtectedRoute>
-                <ProfilePage />
-              </ProtectedRoute>
-            } 
-          />
-          <Route path="/spaces" element={<SpacesPage />} />
-          <Route path="*" element={<NotFoundPage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/contacts" element={<ContactsPage />} />
+        <Route path="/events" element={<EventsPage />} />
+        <Route path="/faq" element={<FAQPage />} />
+        <Route path="/internships" element={<InternshipsPage />} />
+        <Route path="/news" element={<NewsPage />} />
+        <Route path="/news/article/:id" element={<NewsArticlePage />} />
+        <Route path="/events/article/:id" element={<EventArticlePage />} />
+        <Route 
+          path="/profile" 
+          element={
+          <ProtectedRoute>
+            <ProfilePage />
+          </ProtectedRoute>
+          } 
+        />
+        <Route path="/spaces" element={<SpacesPage />} />
+        <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
+      </UserProvider>
     </QueryClientProvider>
   );
-}
+};
 
 export default App;

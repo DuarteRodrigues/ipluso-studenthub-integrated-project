@@ -8,6 +8,7 @@
 
 // Import Packages
 import React, {useRef, useEffect} from "react";
+import { useUser } from "../../store/UserContext.tsx";
 
 // Import Styles
 import "./UserDropdown.css";
@@ -20,7 +21,7 @@ type UserDropdownProps = {
 };
 
 const UserDropdown: React.FC<UserDropdownProps> = ({ show, onClose, onLogout}) => {
-    
+    const { user } = useUser();
     const dropdownRef = useRef<HTMLDivElement>(null);
 
     // Hide dropdown when clicking outside
@@ -40,7 +41,10 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ show, onClose, onLogout}) =
 
     return (
         <div className="UserDropdownContent">
-            <a href="/profile">Profile</a>
+            <h4 style={{ margin: "0 0 0.2rem 0", color: "#b0073b" }}>
+                { user?.username ? `Utilizador: ${user.username}` : "Utilizador não autenticado" }  
+            </h4>
+            <a href="/profile">Perfil</a>
             <button onClick={onLogout}>Logout</button>
         </div>
     );

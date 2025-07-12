@@ -22,7 +22,7 @@ router.post("/login", async (req, res) => {
             return res.status(401).json({ message: "Credenciais inválidas." });
         }
         console.log("[Auth] Login successful for:", username);
-        res.json({ message: "Login bem-sucedido", username: user.username });
+        res.json({ message: "Login bem-sucedido", userId: user._id.toString(), username: user.username }); // Return the ObjectId as a string
     } catch (error) {
         console.error("[Auth] Server error:", err);
         res.status(500).json({ message: "Erro do servidor."});

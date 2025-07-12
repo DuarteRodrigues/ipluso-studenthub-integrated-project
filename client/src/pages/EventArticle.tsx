@@ -7,7 +7,7 @@
  */
 
 // Import Packages
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 // Import Components
@@ -15,10 +15,19 @@ import Headers from '../components/Header/Header.tsx';
 import EventArticleLayout from '../layouts/EventArticleLayout.tsx';
 import Footer from '../components/Footer/Footer.tsx';
 
+const apiURL = process.env.REACT_APP_API_URL;
+
 const EventArticle: React.FC = () => {
 
     const { id } = useParams<{ id: string}>();
-    const article = events.find(e => e.id === Number(id));
+    const [article, setArticle] = useState(null);
+
+    useEffect(() => {
+        fetch(`${apiURL}/events/article/${id}`)
+            .then(res => res.json())
+            .then(data => setArticle(data));
+    },
+    [id]);
 
     if (!article) return <div> Artigo não encontrado.</div>;
 

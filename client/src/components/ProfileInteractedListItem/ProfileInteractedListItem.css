@@ -1,0 +1,12 @@
+.NewsLink {
+    text-decoration: none;
+    color: inherit;
+}
+
+.NewsLink:hover {
+    color: #b0073b;
+    text-decoration: none;
+}
+
+
+
