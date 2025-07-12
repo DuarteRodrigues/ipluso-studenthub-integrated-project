@@ -71,7 +71,7 @@ router.post("/news/article/:id/feedback", async (req, res) => {
                         { $pull: { feedback: { userId: new ObjectId(userId) } } }
                     );
                 } else {
-                    // Update existing feedback type in-place
+                    // Update existing feedback
                     await collection.updateOne(
                         { _id: new ObjectId(articleId), "feedback.userId": new ObjectId(userId) },
                         { $set: { "feedback.$.type": type, "feedback.$.date": new Date() } }

@@ -9,6 +9,9 @@
 // Import Packages
 import React, { useState, useEffect } from 'react';
 
+// Import Features
+import ArticleFeedbackButtons from '../features/ArticleFeedbackButtons/ArticleFeedbackButtons.tsx';
+
 // Import Context
 import { useUser } from '../store/UserContext.tsx';
 
@@ -47,7 +50,7 @@ const NewsArticleLayout: React.FC<NewsArticleLayoutProps> = ({ article }) => {
   const [initialFeedback, setInitialFeedback] = useState<string | null>(null);
   
     const handleFeedback = (type: string) => {
-        let newFeedback = null;
+        let newFeedback: string | null = null;;
         let newCounts = { ...feedbackCount };
 
         if (userFeedback === type) {
@@ -89,17 +92,12 @@ const NewsArticleLayout: React.FC<NewsArticleLayoutProps> = ({ article }) => {
             <h1 className="ArticleTitle">{article.title}</h1>
             <div className="ArticleContent">{article.content}</div>
             {user?.username?.startsWith("a") && (
-                <div className="ArticleFeedbackButtons">
-                    {feedBackTypes.map(({type, label})=> (
-                        <button
-                            key={type}
-                            className={`FeedbackButton ${userFeedback === type ? 'active' : ''}`}
-                            onClick={() => handleFeedback(type)}
-                            >
-                            {label} ({feedbackCount[type] || 0})
-                        </button>
-                    ))}
-                </div>
+                <ArticleFeedbackButtons
+                    feedbackTypes={feedBackTypes}
+                    userFeedback={userFeedback}
+                    feedbackCount={feedbackCount}
+                    onFeedback={handleFeedback}
+                />
             )}
             {article.tags && article.tags.length > 0 && (
                 <div className="ArticleTags">

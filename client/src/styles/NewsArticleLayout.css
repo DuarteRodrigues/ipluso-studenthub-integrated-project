@@ -1,5 +1,5 @@
 .NewsArticlePage {
-    max-width: 700px;
+    max-width: 800px;
     margin: 2rem auto;
     padding: 2rem 1.5rem 2.5rem 1.5rem;
     background: #fff;
@@ -19,7 +19,7 @@
 
 .ArticleTitle {
     color: #111;
-    font-size: 2rem;
+    font-size: 2.1rem;
     font-weight: bold;
     font-style: italic;
     margin-bottom: 1.2rem;
@@ -31,9 +31,8 @@
     font-size: 1.13rem;
     line-height: 1.7;
     margin-bottom: 2rem;
-    width: 100%;
     text-align: justify;
-    font-size: 1rem;
+    width: 100%;
 }
 
 .ArticleTags {
@@ -55,53 +54,15 @@
 }
 
 .ArticleTag {
- color: #f3e6ef;
+    background: #f3e6ef;
+    border-radius: 1rem;
+    color: #b0073b;
     display: inline-block;
-    background: #b0073b;
-    border-radius: 1rem;
-    padding: 0.2em 0.7em;
+    font-size: 0.95rem;
     margin: 0 0.1rem;
-    font-size: 0.95rem;
-    overflow-wrap: anywhere; /* ensures long tags break if needed */
+    overflow-wrap: anywhere;     /* ensures long tags break if needed */
+    padding: 0.2em 0.7em;
     word-break: break-word;
-}
-
-.ArticleFeedbackButtons {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 1.5rem;
-} 
-
-.FeedbackButton {
-    align-items: center;
-    background: #007bff;
-    border: none;
-    border-radius: 1rem;
-    box-shadow: 0 1px 6px rgba(176,7,59,0.07);
-    color: #f3e6ef;
-    cursor: pointer;
-    display: flex;
-    font-size: 0.95rem;
-    font-weight: 500;
-    gap: 0.4rem;
-    height: 2rem;
-    min-width: 120px;
-    outline: none;
-    padding: 0.5rem 1.3rem;
-    transition: background 0.18s, color 0.18s, box-shadow 0.18s;
-}
-
-.FeedbackButton.active,
-.FeedbackButton:hover {
-  background: #b0073b;
-  color: #fff;
-  box-shadow: 0 2px 12px rgba(176,7,59,0.13);
-}
-
-.FeedbackButton:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
 }
 
 .ArticleMeta {
@@ -113,4 +74,8 @@
     font-style: italic;
     border-top: 1px solid #eee;
     padding-top: 1rem;
+}
+
+.ArticleAuthor {
+    font-weight: 500;
 }

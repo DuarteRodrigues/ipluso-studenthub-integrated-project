@@ -34,12 +34,21 @@ const ProfileUserLayout: React.FC<{ userData: any }> = ({ userData }) => {
     const { user } = useUser();
     const [activeTab, setActiveTab] = useState<'news' | 'events'> ('news');
     const [interactedNews, setInteractedNews] = useState<any[]>([]);
+    const [interactedEvents, setInteractedEvents] = useState<any[]>([]);
 
     useEffect(() => {
         if (user && user.userId) {
             fetch(`${apiURL}/news/interacted/${user.userId}`)
                 .then(res => res.json())
                 .then(data => setInteractedNews(Array.isArray(data) ? data : []));
+        }
+    }, [user]);
+
+    useEffect(() => {
+        if (user && user.userId) {
+            fetch(`${apiURL}/events/interacted/${user.userId}`)
+                .then(res => res.json())
+                .then(data => setInteractedEvents(Array.isArray(data) ? data : []));
         }
     }, [user]);
 
@@ -81,8 +90,8 @@ const ProfileUserLayout: React.FC<{ userData: any }> = ({ userData }) => {
                         </div>
                     ) : (
                         <div>
-                            {/* TODO: Render list of events of interest */}
-                            <p>Lista de eventos marcados como interessante.</p>
+                            <p>Estes são os eventos com que interagiste!</p>
+                            <ProfileInteractedList items={interactedEvents} emptyMessage="Não interagiste com nenhum evento (ainda...)" />
                         </div>
                     )}
                 </div>
