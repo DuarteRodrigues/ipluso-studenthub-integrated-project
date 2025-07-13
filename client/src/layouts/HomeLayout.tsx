@@ -14,12 +14,13 @@ import TitleCard from '../components/TitleCard/TitleCard.tsx';
 import Navbar from '../components/Navbar/Navbar.tsx';
 import WelcomeMessage from '../components/WelcomeMessage/WelcomeMessage.tsx';
 import NewsEventsPanel from '../components/NewsEventsPanel/NewsEventsPanel.tsx';
+import InternshipsPanel from '../components/InternshipsPanel/InternshipsPanel.tsx';
 import SpacePanel from '../components/SpacePanel/SpacePanel.tsx';
 
 // Todo: Add a Carousel with cards for the internship oportunities
 // Todo: Add a section for the contacts
 
-const HomeLayout = ({news, newsLoading, newsError, events, eventsLoading, eventsError}) => {
+const HomeLayout = ({news, newsLoading, newsError, events, eventsLoading, eventsError, internships, internshipsLoading, internshipsError}) => {
   return (
     <>      
         <TitleCard />
@@ -32,6 +33,11 @@ const HomeLayout = ({news, newsLoading, newsError, events, eventsLoading, events
           events={events}
           eventsLoading={eventsLoading}
           eventsError={eventsError}
+        />
+        <InternshipsPanel
+          internships={internships}
+          internshipsLoading={internshipsLoading}
+          internshipsError={internshipsError}
         />
         <SpacePanel />
     </>

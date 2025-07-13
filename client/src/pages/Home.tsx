@@ -54,6 +54,7 @@ const apiURL = process.env.REACT_APP_API_URL;
 // Fetch articles from the API
   const fetchNews = await fetchArticles(apiURL, "news");
   const fetchEvents = await fetchArticles(apiURL, "events");
+  const fetchInternships = await fetchArticles(apiURL, "internships");
 
 
 function HomePage() {
@@ -74,8 +75,16 @@ function HomePage() {
     refetchOnWindowFocus: true // (Default, but explicit for clarity)
   });
 
+  const {data : internships = [], isLoading: internshipsLoading, error: internshipsError} = useQuery ({
+    queryKey: ['internships'],
+    queryFn: () => fetchInternships,
+    staleTime: 1000 * 60 * 2, // 2 minutes
+    refetchOnWindowFocus: true // (Default, but explicit for clarity)
+  });
+
   const sortedNews = sortMostRecent(news).slice(0, 3); // Get the 3 most recent news
   const sortedEvents = sortMostRecent(events).slice(0, 3); // Get the 3 most recent events
+  const sortedInternships = sortMostRecent(internships).slice(0, 3); // Get the 3 most recent internships
 
   const imagesLoaded = useImagesLoaded(imageUrls);
 
@@ -98,6 +107,9 @@ function HomePage() {
           events={sortedEvents}
           eventsLoading={eventsLoading}
           eventsError={eventsError}
+          internships={sortedInternships}
+          internshipsLoading={internshipsLoading}
+          internshipsError={internshipsError}
         />
       </div>
       <Footer />

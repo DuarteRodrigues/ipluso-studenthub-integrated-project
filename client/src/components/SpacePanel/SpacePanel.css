@@ -104,6 +104,7 @@
 
     .SpaceCard {
         width: 80%;
-        /*max-width: 350px;*/
+        height: 17.5rem;
+        min-height: 0;
     }
 }

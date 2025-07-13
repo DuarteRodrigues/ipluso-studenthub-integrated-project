@@ -31,10 +31,11 @@ const CookieConsent: React.FC = () => {
 
     return (
         <div className="CookieConsent">
-            <span>Este site utiliza cookies para melhorar a sua experiência. Ao continuar, aceita a nossa política de cookies.</span>
-                
-            <button style={{ marginLeft: 16 }} onClick={() => handleConsent(true)}>Accept</button>
-            <button style={{ marginLeft: 8 }} onClick={() => handleConsent(false)}>Decline</button>
+            <span>Este site utiliza cookies para melhorar a sua experiência. Ao continuar, aceita a nossa política de cookies.<br></br></span>
+            <div className="CookieConsentButtons">
+                <button onClick={() => handleConsent(true)}>Aceito</button>
+                <button onClick={() => handleConsent(false)}>Recuso</button>
+            </div>   
         </div>
     );
 }

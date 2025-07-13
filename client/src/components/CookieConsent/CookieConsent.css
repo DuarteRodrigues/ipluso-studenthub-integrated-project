@@ -1,14 +1,39 @@
 .CookieConsent {
-    background: #fff;
+    align-items: center;
+    background: rgba(255,255,255,0.75);
     border-top: 1px solid #ccc;
+    border-radius: 1rem;
     bottom: 0;
     box-shadow: 0 -2px 8px rgba(0,0,0,0.07);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    justify-content: center;
     left: 0;
-    padding: 1rem;
+    max-width: 750px;    /* Match your main content's max-width */
+    margin: 0 auto 1rem;  
+    padding: 1.2rem 2rem;
     position: fixed;
-    text-align: center;
+    right: 0;
     width: 100%;
     z-index: 9999;
+}
+
+.CookieConsent span {
+    max-width: 700px;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    font-size: 1rem;
+}
+
+.CookieConsentButtons {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;                /* Even gap between buttons */
+    justify-content: center;
+    align-items: center;
 }
 
 .CookieConsent button {
@@ -17,10 +42,10 @@
     border: none;
     border-radius: 0.25rem;
     padding: 0.5rem 1.2rem;
-    margin-left: 1rem;
     font-size: 1rem;
     cursor: pointer;
     transition: background 0.2s;
+    margin: 0;
 }
 
 .CookieConsent button:hover,
