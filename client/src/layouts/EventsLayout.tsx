@@ -14,11 +14,13 @@ import ArticlesLayout from './ArticlesLayout.tsx';
 
 const TAGS = ["EET", "ECIA", "ESCAD", "ESEL", "ESPA", "ERISA"];
 
-const EventsLayout: React.FC = () => {
+const EventsLayout: React.FC = ({ events, eventsLoading, eventsError }) => {
   return (
     <>
       <ArticlesLayout
-        apiPath="events"
+        articles={events}
+        articlesLoading={eventsLoading}
+        articlesError={eventsError}
         tags={TAGS}
         pageTitle="Eventos"
         pageSubtitle="Esta é a página de eventos"

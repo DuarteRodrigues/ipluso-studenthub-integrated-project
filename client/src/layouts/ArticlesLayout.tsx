@@ -18,19 +18,17 @@
 
 // Import Packages
 import React, { useEffect, useState, useRef } from 'react';
-import { useQuery } from '@tanstack/react-query';
 
 // Import Components
 import NewsEventCard from '../components/NewsEventCard/NewsEventCard.tsx';
-
-// Import Utilities
-import { sortMostRecent } from '../utils/articleManipulation.tsx';
 
 // Import Styles
 import '../styles/ArticlesLayout.css';
 
 type ArticlesLayoutProps = {
-    apiPath: string;
+    articles: any[]; // Array of articles to display
+    articlesLoading: boolean; // Loading state for articles
+    articlesError: any; // Error state for articles
     tags: string[];
     pageTitle: string;
     pageSubtitle: string;
@@ -42,19 +40,10 @@ type ArticlesLayoutProps = {
 };
 
 const PAGE_SIZE = 20;
-const apiURL = process.env.REACT_APP_API_URL;
-
-// Fetch events from backend
-const fetchArticles = async (apiPath: string) => {
-    const res = await fetch(`${apiURL}/${apiPath}`);
-    if (!res.ok) {
-        throw new Error(`Failed to fetch ${apiPath}`);
-    }
-    return res.json();
-}
 
 const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({
-    apiPath, tags, pageTitle, pageSubtitle, cardType,
+    articles, articlesLoading, articlesError,
+    tags, pageTitle, pageSubtitle, cardType,
     layoutClassName = '',tagsBarClassName = '',
     resultsCountClassName = '', gridClassName = '' }) => {
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -62,26 +51,16 @@ const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({
     const [loading, setLoading] = useState(false);
     const prevFilteredArticlesLength = useRef(0);
 
-    const { data: articlesData = [], isLoading, error } = useQuery({
-        queryKey: [apiPath],
-        queryFn: () => fetchArticles(apiPath),
-        staleTime: 1000 * 60 * 2  // 2 minutes
-        , refetchOnWindowFocus: true // (Default, but explicit for clarity)
-    });
-
-    // Sort articles by most recent
-    const sortedArticles = sortMostRecent(articlesData);
-
     // Filter articles: show all if no tag selected, else show those with at least one selected tag
     const filteredArticles = selectedTags.length === 0
-        ? sortedArticles
-        : sortedArticles.filter(article =>
+        ? articles
+        : articles.filter(article =>
             article.tags && selectedTags.every(tag => article.tags.includes(tag))
     );
 
     const dynamicTags = Array.from(
     new Set(
-        sortedArticles
+        articles
             .flatMap(article => article.tags || [])
             .filter(tag => !tags.includes(tag))
         )
@@ -169,8 +148,8 @@ const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({
                 {filteredArticles.length !== 1 ? "s" : ""} encontrada
                 {filteredArticles.length !== 1 ? "s" : ""}
             </div>
-            {isLoading && <div>A carregar {cardType === "news" ? "notícias" : "eventos"}...</div>}
-            {error && <div>Erro ao carregar {cardType === "news" ? "notícias" : "eventos"}.</div>}
+            {articlesLoading && <div>A carregar {cardType === "news" ? "notícias" : "eventos"}...</div>}
+            {articlesError && <div>Erro ao carregar {cardType === "news" ? "notícias" : "eventos"}.</div>}
             <div className={`ArticlesGrid ${gridClassName}`}>
                 {filteredArticles.slice(0, visibleCount).map(article => (
                     <NewsEventCard

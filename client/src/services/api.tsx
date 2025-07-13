@@ -9,6 +9,13 @@
  * @returns {Promise<any>} - A promise that resolves to the article data or interacted articles.
  */
 
+// Used in client/src/hooks/useArticleFeedback.tsx
+export async function fetchArticles(apiURL: string, type: "news" | "events") {
+    const res = await fetch(`${apiURL}/${type}`);
+    if (!res.ok) throw new Error("Failed to fetch articles");
+    return res.json();
+}
+
 export async function fetchArticle (apiURL: string, type: "news" | "events", id: string) {
     const res = await fetch(`${apiURL}/${type}/article/${id}`);
     if (!res.ok) throw new Error("Failed to fetch article");

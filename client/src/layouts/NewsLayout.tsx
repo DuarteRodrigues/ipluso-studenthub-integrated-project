@@ -14,12 +14,14 @@ import ArticlesLayout from './ArticlesLayout.tsx';
 
 const TAGS = ["EET", "ECIA", "ESCAD", "ESEL", "ESPA", "ERISA"];
 
-const NewsLayout: React.FC = () => {
+const NewsLayout: React.FC = ({ news, newsLoading, newsError}) => {
 
     return (
         <>
             <ArticlesLayout
-                apiPath="news"
+                articles={news}
+                articlesLoading={newsLoading}
+                articlesError={newsError}
                 tags={TAGS}
                 pageTitle="Notícias"
                 pageSubtitle="Esta é a página de notícias"

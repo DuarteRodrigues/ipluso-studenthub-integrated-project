@@ -13,52 +13,13 @@ import { useQuery } from "@tanstack/react-query"
 // Import Components
 import NewsEventCard from "../NewsEventCard/NewsEventCard.tsx";
 
-// Import Utilities
-import {sortMostRecent} from "../../utils/articleManipulation.tsx";
-
 // Import Styles
 import "./NewsEventsPanel.css";
 
-const apiURL = process.env.REACT_APP_API_URL;
-
-// Fetch news from backend
-const fetchNews = async () => {
-    const res = await fetch(`${apiURL}/news`);
-    if (!res.ok) {
-        throw new Error("Failed to fetch news");
-    }
-    return res.json()
-}
-
-// Fetch events from backend
-const fetchEvents = async () => {
-    const res = await fetch(`${apiURL}/events`);
-    if (!res.ok) {
-        throw new Error("Failed to fetch events");
-    }
-    return res.json()
-}
-
-const NewsEventsPanel:React.FC = () => {
-
-    // Use React Query to fetch and cache news
-    const { data: news = [], isLoading: newsLoading, error: newsError } = useQuery ({
-        queryKey: ['news'],
-        queryFn: fetchNews,
-        staleTime: 1000 * 60 * 2, // 2 minutes
-        refetchOnWindowFocus: true // (Default, but explicit for clarity)
-    });
-
-    // Use React Query to fetch and cache events
-    const { data: events = [], isLoading: eventsLoading, error: eventsError } = useQuery ({
-        queryKey: ['events'],
-        queryFn: fetchEvents,
-        staleTime: 1000 * 60 * 2, // 2 minutes
-        refetchOnWindowFocus: true // (Default, but explicit for clarity)
-    });
-
-    const sortedNews = sortMostRecent(news).slice(0, 3); // Get the 3 most recent news
-    const sortedEvents = sortMostRecent(events).slice(0, 3); // Get the 3 most recent events
+const NewsEventsPanel:React.FC = ({
+        news = [], newsLoading = false, newsError = null,
+        events = [], eventsLoading = false, eventsError = null
+        }) => {
 
     return (
     <>
@@ -76,7 +37,7 @@ const NewsEventsPanel:React.FC = () => {
                 </div>
                 {newsLoading && <div>A carregar notícias...</div>}
                 {newsError && <div>Erro ao carregar notícias.</div>}
-                {sortedNews.map((item) => (
+                {news.map((item) => (
                     <NewsEventCard
                         key={item._id}
                         {...item}
@@ -92,7 +53,7 @@ const NewsEventsPanel:React.FC = () => {
             </div>
                 {eventsLoading && <div>A carregar eventos...</div>}
                 {eventsError && <div>Erro ao carregar eventos.</div>}
-                {sortedEvents.map((item, idx) => (
+                {events.map((item, idx) => (
                     <NewsEventCard
                         key={idx}
                         {...item}

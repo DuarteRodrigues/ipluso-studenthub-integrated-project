@@ -19,13 +19,20 @@ import SpacePanel from '../components/SpacePanel/SpacePanel.tsx';
 // Todo: Add a Carousel with cards for the internship oportunities
 // Todo: Add a section for the contacts
 
-const HomeLayout = () => {
+const HomeLayout = ({news, newsLoading, newsError, events, eventsLoading, eventsError}) => {
   return (
     <>      
         <TitleCard />
         <Navbar />
         <WelcomeMessage />
-        <NewsEventsPanel />
+        <NewsEventsPanel
+          news={news} 
+          newsLoading={newsLoading}
+          newsError={newsError}
+          events={events}
+          eventsLoading={eventsLoading}
+          eventsError={eventsError}
+        />
         <SpacePanel />
     </>
   );
