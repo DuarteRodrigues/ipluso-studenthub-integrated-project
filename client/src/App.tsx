@@ -4,7 +4,7 @@
  * Sets up the React Router for client-side navigation and renders the Navbar and page components.
  * Defines routes for Home, FAQ, Contacts, News, Internships, and NotFound pages.
  *
- * @App
+ * @App App
  * @returns {JSX.Element} The main application with routing.
  */
 

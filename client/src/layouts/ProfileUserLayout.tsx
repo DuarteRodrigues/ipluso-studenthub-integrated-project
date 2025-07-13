@@ -3,6 +3,8 @@
  * @description Layout component for the user profile page.
  * 
  * @layout ProfileUserLayout
+ * @param {Object} props - The properties for the layout.
+ * @param {Object} props.userData - The user data to display.
  * @returns {JSX.Element} A layout component that renders the user profile content.
  */
 

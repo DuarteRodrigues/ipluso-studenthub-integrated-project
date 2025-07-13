@@ -1,9 +1,12 @@
 /**
  * @file cookieManagement.tsx
- * @description
+ * @description Utility functions for managing cookies in the application.
  * 
- * @utility_file
- * @returns
+ * @utility_file CookieManagement
+ * @function setCookie - Sets a cookie with a specified name, value, and expiration days.
+ * @function getCookie - Retrieves the value of a cookie by its name.
+ * @function deleteCookie - Deletes a cookie by its name.
+ * @returns {void}
  */
 
 export function setCookie(name: string, value: string, days = 7) {

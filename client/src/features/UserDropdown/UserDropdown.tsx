@@ -1,10 +1,14 @@
 /**
  * @file UserDropdown.tsx
- * @description 
+ * @description Component for displaying user account options in a dropdown menu.
  * 
- * @component
+ * @component UserDropdown
+ * @param {boolean} show - Whether the dropdown is visible.
+ * @param {function} onClose - Function to call when the dropdown should be closed.
+ * @param {function} onLogout - Function to call when the user logs out.
  * @returns {JSX.Element} The rendered account options of the user once they're logged in.
  */
+
 
 // Import Packages
 import React, {useRef, useEffect} from "react";

@@ -1,8 +1,8 @@
 /**
  * @file NewsEventCard.tsx
- * @description Component for displaying news and event cards on the homepage.
+ * @description Component for displaying a card with news or event information.
  * 
- * @component
+ * @component NewsEventCard
  * @returns {JSX.Element} A card displaying news or event information.
  */
 

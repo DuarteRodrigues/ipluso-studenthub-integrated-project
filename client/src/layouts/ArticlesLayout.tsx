@@ -3,6 +3,16 @@
  * @description Layout component for displaying articles, including news and events.
  * 
  * @layout ArticlesLayout
+ * @param {Object} props - The properties for the layout.
+ * @param {string} props.apiPath - The API endpoint to fetch articles from.
+ * @param {string[]} props.tags - The tags to filter articles by.
+ * @param {string} props.pageTitle - The title of the page.
+ * @param {string} props.pageSubtitle - The subtitle of the page.
+ * @param {'news' | 'events'} props.cardType - The type of articles to display.
+ * @param {string} [props.layoutClassName] - Additional class names for the layout.
+ * @param {string} [props.tagsBarClassName] - Additional class names for the tags bar.
+ * @param {string} [props.resultsCountClassName] - Additional class names for the results count.
+ * @param {string} [props.gridClassName] - Additional class names for the grid.
  * @returns {JSX.Element} A layout displaying a list of articles.
  */
 

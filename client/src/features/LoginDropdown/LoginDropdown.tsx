@@ -2,10 +2,13 @@
  * @file LogicDropdown.tsx
  * @description This file defines the LogicModal component for the Student Hub application.
  * 
- * @component
+ * @component LoginDropdown
+ * @params {boolean} show - Determines if the dropdown is visible.
+ * @params {function} onClose - Callback function to close the dropdown.
+ * @params {function} onLogin - Callback function to handle login.
+ * @params {string} [error] - Optional error message to display.
  * @returns {JSX.Element} The rendered LogicModal component.
  */
-
 // Import Packages
 import React, { useState } from "react";
 

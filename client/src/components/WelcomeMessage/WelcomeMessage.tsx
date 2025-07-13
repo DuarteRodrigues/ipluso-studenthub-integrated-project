@@ -1,8 +1,8 @@
 /**
  * @file WelcomeMessage.tsx
- * @description welcome message component for the IPLuso StudentHub Integrated Project.
+ * @description This file contains the WelcomeMessage component, which displays a welcome message to users.
  * 
- * @component
+ * @component WelcomeMessage
  * @returns {JSX.Element} The rendered WelcomeMessage component.
  */
 

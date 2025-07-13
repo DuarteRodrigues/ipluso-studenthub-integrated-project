@@ -2,7 +2,7 @@
  * @file useImagesLoaded.tsx
  * @description Custom hook to check if all images in a given array have loaded.
  *
- * @hook
+ * @hook useImagesLoaded
  * @param {string[]} imageUrls - Array of image URLs to check.
  * @returns {boolean} - Returns true if all images have loaded, false otherwise.
  */

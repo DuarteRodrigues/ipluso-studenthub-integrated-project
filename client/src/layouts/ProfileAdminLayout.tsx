@@ -1,3 +1,11 @@
+/**
+ * @file ProfileAdminLayout.tsx
+ * @description Layout component for the admin profile page.
+ * 
+ * @layout ProfileAdminLayout
+ * @returns {JSX.Element} A layout component that renders the admin profile content.
+ */
+
 import React from 'react'
 
 const ProfileAdminLayout = () => {

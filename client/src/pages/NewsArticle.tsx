@@ -1,8 +1,8 @@
 /**
- * @file Article.tsx
+ * @file NewsArticle.tsx
  * @description Component for displaying a single article (news or event) in detail.
  * 
- * @page Article
+ * @page NewsArticle
  * @returns {JSX.Element} A page displaying the article's title, content, and author.
  */
 

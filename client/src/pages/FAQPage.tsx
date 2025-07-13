@@ -2,7 +2,7 @@
  * @file FAQPage.js
  * @description Page component for the Frequently Asked Questions section of the IPLuso StudentHub Integrated Project
  *
- * @Page
+ * @Page FAQPage
  * @returns {JSX.Element} The FAQ page component, which includes a header, a title, a brief description, and a footer.
  */
 

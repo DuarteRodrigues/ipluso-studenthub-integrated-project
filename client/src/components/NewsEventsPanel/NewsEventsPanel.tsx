@@ -1,6 +1,6 @@
 /**
  * @file NewsEventsPanel.tsx
- * @description
+ * @description Component for displaying a panel of news and events.
  * 
  * @component NewsEventsPanel
  * @returns {JSX.Element} A panel displaying news and events.

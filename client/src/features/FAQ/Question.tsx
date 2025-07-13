@@ -2,7 +2,7 @@
  * @file Question.js
  * @description Component for displaying a single FAQ question and its answer in the IPLuso StudentHub Integrated Project.
  *
- * @component
+ * @component Question
  * @param {Object[]} questions - Array of question objects with 'question' and 'answer' properties.
  * @returns {JSX.Element} The Question component, which includes a question and its answer.
  */

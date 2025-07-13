@@ -1,8 +1,10 @@
 /**
- * @file ProfileNewsList.tsx
+ * @file ProfileInteractedList.tsx
  * @description Component that displays a list of news articles interacted with by the user.
  * 
- * @component
+ * @component ProfileInteractedList
+ * @param {Array} items - Array of news articles with properties _id, title, and date.
+ * @param {string} [emptyMessage] - Optional message to display when there are no items.
  * @returns {JSX.Element} A list of news articles with links to their respective pages.
  */
 

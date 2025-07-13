@@ -1,8 +1,8 @@
 /**
  * @file TitleCard.js
- * @description TitleCard component for the IPLuso StudentHub Integrated Project.
+ * @description This file contains the TitleCard component, which displays the main title and image of the project.
  *
- * @component
+ * @component TitleCard
  * @returns {JSX.Element} The TitleCard component displaying the project title and image.
  */
 

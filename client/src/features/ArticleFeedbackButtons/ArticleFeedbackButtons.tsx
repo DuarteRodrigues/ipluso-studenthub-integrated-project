@@ -1,8 +1,12 @@
 /**
  * @file ArticleFeedbackButtons.tsx
- * @description Component for displaying feedback buttons on articles.
+ * @description Component for displaying feedback buttons for articles.
  * 
  * @feature ArticleFeedbackButtons
+ * @params {Array<{ type: string; label: string }>} feedbackTypes - Types of feedback buttons to display.
+ * @params {string | null} userFeedback - The current feedback type given by the user
+ * @params {Object} feedbackCount - An object containing the count of feedback for each type.
+ * @params {function} onFeedback - Callback function to handle feedback button clicks.
  * @returns {JSX.Element} A component that allows users to provide feedback on articles.
  */
 

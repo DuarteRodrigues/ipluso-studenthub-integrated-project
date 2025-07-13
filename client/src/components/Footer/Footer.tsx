@@ -2,7 +2,7 @@
  * @file Footer.js
  * @description This file contains the Footer component, which renders the footer section of the application.
  *
- * @component
+ * @component Footer
  * @returns {JSX.Element} The rendered footer component.
  */
 

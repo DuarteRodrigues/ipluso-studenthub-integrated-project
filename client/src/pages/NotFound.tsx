@@ -1,3 +1,11 @@
+/**
+ * @file NotFound.tsx
+ * @description Page component for displaying a 404 Not Found error.
+ * 
+ * @page NotFound
+ * @returns {JSX.Element} A page displaying a 404 error message and a link
+ */
+
 import React from "react";
 import { Link } from "react-router-dom";
 

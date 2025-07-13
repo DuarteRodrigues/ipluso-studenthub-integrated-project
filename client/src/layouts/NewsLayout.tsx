@@ -1,8 +1,6 @@
 /**
  * @file NewsLayout.tsx
- * @description Layout component for the News section of the IPLuso StudentHub Integrated Project.
- * This component provides a consistent layout for the list of news articles,
- * including a header and footer, and renders the news articles passed as children.
+ * @description Layout component for displaying news articles.
  * 
  * @layout NewsLayout
  * @returns {JSX.Element} A layout displaying the news articles with a header and footer.

@@ -1,8 +1,8 @@
 /**
- * @file Events.js
+ * @file Events.tsx
  * @description This file contains the Events page component, which displays a list of events
  *
- * @Page
+ * @Page Events
  * @returns {JSX.Element} The rendered Events page component.
  */
 

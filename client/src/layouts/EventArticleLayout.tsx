@@ -2,15 +2,29 @@
  * @file EventArticleLayout.tsx
  * @description Layout component for displaying a single event article in detail.
  * 
- * @Layout EventArticleLayout
+ * @layout EventArticleLayout
+ * @param {Object} props - The properties for the layout.
+ * @param {Object} props.article - The article data to display.
+ * @param {number} props.article.id - The unique identifier for the article.
+ * @param {string} props.article.thumbnail - The URL of the article's thumbnail image.
+ * @param {string} props.article.title - The title of the article.
+ * @param {string} props.article.description - A brief description of the article.
+ * @param {string} props.article.date - The date of the article.
+ * @param {string[]} props.article.tags - The tags associated with the article.
+ * @param {string} [props.article.author] - The author of the article.
+ * @param {string} [props.article.content] - The content of the article.
  * @returns {JSX.Element} A layout displaying the event article's content.
  */
 
+
 // Import Packages
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 // Import Components
 import ArticleFeedbackButtons from '../features/ArticleFeedbackButtons/ArticleFeedbackButtons.tsx'
+
+// Import Hooks
+import { useArticleFeedback } from '../hooks/useArticleFeedback.tsx';
 
 // Import Context
 import { useUser } from '../store/UserContext.tsx';
@@ -45,45 +59,13 @@ const EventArticleLayout: React.FC<EventArticleLayoutProps> = ({ article }) => {
 
   const { user } = useUser();
 
-  const [userFeedback, setUserFeedback] = useState<string | null>(null);
-  const [feedbackCount, setFeedbackCount] = useState<{ [key: string] : number}> ({});
-  const [initialFeedback, setInitialFeedback] = useState<string | null>(null);
-
-  const handleFeedback = (type: string) => {
-    let newFeedback: string | null = null;
-    let newCounts = { ...feedbackCount };
-
-    if (userFeedback === type) {
-      // Untoggle: remove feedback
-      newCounts[type] = (newCounts[type] || 1) - 1;
-      newFeedback = null;
-    } else {
-      // Set new feedback
-      if (userFeedback) newCounts[userFeedback] = (newCounts[userFeedback] || 1) - 1;
-      newCounts[type] = (newCounts[type] || 0) + 1;
-      newFeedback = type;
-    }
-
-    setFeedbackCount(newCounts);
-    setUserFeedback(newFeedback);
-
-    //Update backend immediately
-    fetch(`${apiURL}/events/article/${article._id}/feedback`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ userId: user.userId, type: newFeedback }),
-    });
-  };
-
-  useEffect(() => {
-    // Fetch feedback counts and user feedback for the article
-    fetch(`${apiURL}/events/article/${article._id}/feedback?userId=${user.userId}`)
-      .then(res => res.json())
-      .then(data => {
-        setFeedbackCount(data.feedbackCount);
-        setUserFeedback(data.userFeedback);
-      });
-    }, [article._id, user.userId]);
+  // Use the custom hook, passing user?.userId (may be undefined if not logged in)
+  const { userFeedback, feedbackCount, handleFeedback } = useArticleFeedback(
+    apiURL,
+    String(article._id),
+    user?.userId ?? "",
+    "events/article"
+  );
 
   return (
     <div className="EventsArticlePage">
@@ -118,4 +100,4 @@ const EventArticleLayout: React.FC<EventArticleLayoutProps> = ({ article }) => {
   )
 }
 
-export default EventArticleLayout
+export default EventArticleLayout;

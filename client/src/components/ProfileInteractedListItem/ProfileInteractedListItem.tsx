@@ -1,8 +1,9 @@
 /**
- * @file ProfileNewsListItem.tsx
- * @description Component to display a news item in the user's profile.
+ * @file ProfileInteractedListItem.tsx
+ * @description Component for displaying a list item in the profile's interacted articles list.
  * 
- * @component
+ * @component ProfileInteractedListItem
+ * @param {Object} article - The article object containing details like _id, title, and date.
  * @returns {JSX.Element} A list item displaying the news title and a link to the article
  */
 

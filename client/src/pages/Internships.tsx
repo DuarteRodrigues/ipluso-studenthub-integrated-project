@@ -1,9 +1,9 @@
 /**
  * @file Internships.js
- * @description
+ * @description Page component for displaying internship opportunities.
  *
- * @page
- * @returns
+ * @page InternshipsPage
+ * @returns {JSX.Element} A page displaying a list of available internships.
  */
 
 // Import Packages

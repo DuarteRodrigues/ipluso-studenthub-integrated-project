@@ -1,14 +1,10 @@
 /**
  * @file Header.tsx
- * @description This file defines the Header component for the Student Hub application. The Header displays the main 
- * navigation bar, including the Ensino Lusófona logo, a link to the home page with the Student Hub logo and title, and 
- * a dropdown menu labeled "Ferramentas" that provides quick access to external college-related resources such as IPLuso,
- * Moodle, NetPA and AEIPLuso. The component imports necessary assets and styles, and utilizes React Router's Link for 
- * navigation.
+ * @description Header component for the application, including navigation and user actions.
  * 
- * @component
+ * @component Header
  * @returns {JSX.Element} The rendered header component.          
-*/      
+*/  
 
 //Import Packages
 import React from "react"

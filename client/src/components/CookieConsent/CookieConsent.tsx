@@ -1,9 +1,9 @@
 /**
  * @file CookieConsent.tsx
- * @description 
+ * @description Component for displaying a cookie consent banner. 
  * 
  * @component CookieConsent
- * @returns {JSX.Element} A component that displays a cookie consent banner.
+ * @returns {JSX.Element} A banner prompting users to accept or decline cookies.
  */
 
 // Import Packages

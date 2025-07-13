@@ -1,9 +1,14 @@
 /**
  * @file useDropdown.tsx
- * @description 
+ * @description Custom hook for managing dropdown state and behavior.
  * 
- * @hook
- * @returns 
+ * @hook useDropdown
+ * @template T - The type of the HTML element the dropdown is attached to.
+ * @returns {[boolean, () => void, RefObject<T>, () => void]} An array containing:
+ * - `open`: A boolean indicating if the dropdown is open.
+ * - `toggle`: A function to toggle the dropdown open/close state.
+ * - `ref`: A ref object to attach to the dropdown element.
+ * - `close`: A function to close the dropdown.
  */
 
 // Import packages

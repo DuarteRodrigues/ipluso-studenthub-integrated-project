@@ -26,8 +26,7 @@ const EventArticle: React.FC = () => {
         fetch(`${apiURL}/events/article/${id}`)
             .then(res => res.json())
             .then(data => setArticle(data));
-    },
-    [id]);
+    }, [id]);
 
     if (!article) return <div> Artigo não encontrado.</div>;
 

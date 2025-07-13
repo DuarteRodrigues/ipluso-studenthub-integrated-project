@@ -1,9 +1,8 @@
 /**
  * @file Navbar.js
- * @description This file contains the Navbar component, which renders the main navigation bar for the application,
- * including links to the Home, FAQ, and Contacts pages, as well as the Lusófona logo.
+ * @description This file contains the Navbar component, which renders the navigation bar of the application.
  *
- * @component
+ * @component Navbar
  * @returns {JSX.Element} The rendered navigation bar component.
  */
 
