@@ -6,11 +6,28 @@
  * @returns {JSX.Element} A layout component that can be used to wrap Internships-related pages.
  */
 
+// Import Packages
 import React from 'react'
 
-const InternshipsLayout = () => {
+// Import Components
+import ArticlesLayout from './ArticlesLayout.tsx';
+
+const TAGS = ["EET", "ECIA", "ESCAD", "ESEL", "ESPA", "ERISA"];
+
+const InternshipsLayout: React.FC = ({ internships, internshipsLoading, internshipsError}) => {
+
   return (
-    <div>InternshipsLayout</div>
+    <>
+      <ArticlesLayout
+        articles={internships}
+        articlesLoading={internshipsLoading}
+        articlesError={internshipsError}
+        tags={TAGS}
+        pageTitle="Estágios"
+        pageSubtitle="Esta é a página de estágios"
+        cardType="internships"
+      />
+    </>
   )
 }
 

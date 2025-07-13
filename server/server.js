@@ -4,6 +4,7 @@ import records from "./routes/record.js";
 import auth from "./routes/auth.js";
 import newsData from "./routes/news.js";
 import eventsData from "./routes/events.js";
+import internshipsData from "./routes/internships.js";
 import profile from "./routes/profile.js";
 
 const PORT = process.env.PORT || 5000;
@@ -19,6 +20,8 @@ app.use("/auth", auth);
 app.use("/", newsData);
 
 app.use("/", eventsData);
+
+app.use("/", internshipsData);
 
 app.use("/", profile);
 // Start the Express Server

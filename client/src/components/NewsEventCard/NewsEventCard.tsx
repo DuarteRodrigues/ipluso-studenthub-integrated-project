@@ -16,7 +16,7 @@ import "./NewsEventCard.css";
 // Declare types for props
 type NewsEventCardProps = {
     articleId: string; // Unique identifier for the news or event
-    thumbnail: string;
+
     title: string;
     description: string;
     date: string;

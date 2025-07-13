@@ -27,8 +27,8 @@ const EventArticle: React.FC = () => {
     const { id } = useParams<{ id: string}>();
 
     const { data: article, isLoading, error } = useQuery({
-        queryKey: ['news-article', id],
-        queryFn: () => fetchArticle(apiURL, "news", id!),
+        queryKey: ['events-article', id],
+        queryFn: () => fetchArticle(apiURL, "events", id!),
         enabled: !!id,
         staleTime: 1000 * 60 * 2,
     });

@@ -10,19 +10,19 @@
  */
 
 // Used in client/src/hooks/useArticleFeedback.tsx
-export async function fetchArticles(apiURL: string, type: "news" | "events") {
+export async function fetchArticles(apiURL: string, type: "news" | "events" | "internships") {
     const res = await fetch(`${apiURL}/${type}`);
     if (!res.ok) throw new Error("Failed to fetch articles");
     return res.json();
 }
 
-export async function fetchArticle (apiURL: string, type: "news" | "events", id: string) {
+export async function fetchArticle (apiURL: string, type: "news" | "events" | "internships", id: string) {
     const res = await fetch(`${apiURL}/${type}/article/${id}`);
     if (!res.ok) throw new Error("Failed to fetch article");
     return res.json();
 }
 
-export async function fetchInteracted(apiURL: string, type: "news" | "events", userId: string) {
+export async function fetchInteracted(apiURL: string, type: "news" | "events" | "interships", userId: string) {
     const res = await fetch(`${apiURL}/${type}/interacted/${userId}`);
     if (!res.ok) throw new Error("Failed to fetch interacted articles");
     return res.json();

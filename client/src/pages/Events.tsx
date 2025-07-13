@@ -28,6 +28,8 @@ const apiURL = process.env.REACT_APP_API_URL;
 
 const fetchEvents = await fetchArticles(apiURL, "events");
 
+console.log("Fetched events articles:", fetchEvents);
+
 function EventsPage() {
 
   const { data: events = [], isLoading: eventsLoading, error: eventsError } = useQuery({

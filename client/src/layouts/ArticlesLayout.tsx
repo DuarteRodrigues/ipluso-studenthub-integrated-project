@@ -20,7 +20,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 
 // Import Components
-import NewsEventCard from '../components/NewsEventCard/NewsEventCard.tsx';
+import NewsCard from '../components/NewsCard/NewsCard.tsx';
+import EventsCard from '../components/EventsCard/EventsCard.tsx';
+import InternshipsCard from '../components/InternshipsCard/InternshipsCard.tsx';
 
 // Import Styles
 import '../styles/ArticlesLayout.css';
@@ -32,7 +34,7 @@ type ArticlesLayoutProps = {
     tags: string[];
     pageTitle: string;
     pageSubtitle: string;
-    cardType: 'news' | 'events';
+    cardType: 'news' | 'events' | 'internships'; // Type of articles to display
     layoutClassName?: string;
     tagsBarClassName?: string;
     resultsCountClassName?: string;
@@ -144,21 +146,29 @@ const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({
             </div>
 
             <div className={`ArticlesResultsCount ${resultsCountClassName}`}>
-                {filteredArticles.length} {cardType === "news" ? "notícia" : "evento"}
-                {filteredArticles.length !== 1 ? "s" : ""} encontrada
+                {filteredArticles.length}{" "}
+                {cardType === "news" ? "notícia" : 
+                 cardType === "events" ? "evento" : 
+                 cardType === "internships" ? "estágio" :
+                 "artigo"}{" "}
+                {filteredArticles.length !== 1 ? "s" : ""} {" "}
+                { cardType === "news" ? "encontrada" : "encontrado"}
                 {filteredArticles.length !== 1 ? "s" : ""}
             </div>
             {articlesLoading && <div>A carregar {cardType === "news" ? "notícias" : "eventos"}...</div>}
             {articlesError && <div>Erro ao carregar {cardType === "news" ? "notícias" : "eventos"}.</div>}
             <div className={`ArticlesGrid ${gridClassName}`}>
-                {filteredArticles.slice(0, visibleCount).map(article => (
-                    <NewsEventCard
-                        key={article._id}
-                        {...article}
-                        type={cardType}
-                        articleId={article._id}
-                    />
-                ))}
+                {filteredArticles.slice(0, visibleCount).map(article => {
+                    if (cardType === "news") {
+                        return <NewsCard key={article._id} article={article} />;
+                    }
+                    if (cardType === "events") {
+                        return <EventsCard key={article._id} article={article} />;
+                    }
+                    if (cardType === "internships") {
+                        return <InternshipsCard key={article._id} article={article} />;
+                    }
+                })}
             </div>
         </div>
     )

@@ -27,7 +27,9 @@ import {sortMostRecent} from "../utils/articleManipulation.tsx";
 const apiURL = process.env.REACT_APP_API_URL;
 
 // Fetch articles from the API
-  const fetchNews = await fetchArticles(apiURL, "news");
+const fetchNews = await fetchArticles(apiURL, "news");
+
+console.log("Fetched news articles:", fetchNews);
 
 function NewsPage() {
 
