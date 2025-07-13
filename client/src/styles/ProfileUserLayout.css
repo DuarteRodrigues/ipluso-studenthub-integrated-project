@@ -7,8 +7,9 @@
 
 .ProfileUserSidebar {
   width: 220px;
-  background: #f8f8f8;
+  background: #fff;
   border-radius: 1rem;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
   padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
@@ -24,7 +25,7 @@
   margin-bottom: 0.5rem;
 }
 
-.ProfileUserInfo h2 {
+.ProfileUserAvatar h2 {
   margin-bottom: 0.5rem;
   font-size: 2rem;
   font-style: italic;
@@ -33,11 +34,11 @@
 
 .ProfileUserMain {
     flex: 1;
-    background: #f8f8f8;
+    background: #fff;
     border-radius: 1rem;
     padding: 0.2rem 1rem;
     min-height: 400px;
-    box-shadow: 0 2px 16px rgba (0, 0, 0, 0.07);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
 }
 
 .ProfileUserTabs {
@@ -65,4 +66,47 @@
 
 .ProfileUserTabContent {
     padding: 1rem 0;
+}
+
+@media (max-width: 768px) {
+    .ProfileUserContainer {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .ProfileUserSidebar {
+        height: auto;
+        padding: 1rem 1rem 0rem;
+        width: 80%;
+        margin-bottom: 0rem;
+    }
+
+    .ProfileUserSidebar img {
+        margin-bottom: 0;
+    }
+
+    .ProfileUserSidebar h2 {
+      margin: 0;
+    }
+
+    .ProfileUserAvatar {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      justify-content: flex-start;
+      margin-left: 1.5rem;
+      width: 100%;
+    }
+
+    .ProfileUserInfo {
+        margin-left: 1.5rem;
+        justify-content: flex-start;
+        width: 100%;
+    }
+
+    .ProfileUserMain {
+        width: 80%;
+    }
 }

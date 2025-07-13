@@ -60,9 +60,10 @@ const ProfileUserLayout: React.FC<{ userData: any }> = ({ userData }) => {
             <aside className="ProfileUserSidebar">
                 <div className="ProfileUserAvatar">
                     <img src={userIcon} alt="User" />
+                    <h2>Olá, {first_name}!</h2>
                 </div>
                 <div className="ProfileUserInfo">
-                    <h2>Olá, {first_name}!</h2>
+                    
                     <p><strong>Curso:</strong> {course}</p>
                     <p><strong>Ano:</strong> {year}</p>
                     <p><strong>Unidade Orgânica:</strong> {organicUnit}</p>

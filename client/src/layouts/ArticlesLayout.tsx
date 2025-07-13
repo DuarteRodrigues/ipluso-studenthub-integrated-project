@@ -140,7 +140,8 @@ const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({
                         className={selectedTags.includes(tag) ? "ArticlesTagBtn active" : "ArticlesTagBtn"}
                         onClick={() => toggleTag(tag)}
                     >
-                        {tag}
+                        {cardType === "internships" && (!isNaN(Number(tag)) && tag !== "") 
+                            ? `${tag}º Ano` : tag}
                     </button>
                  ))}
             </div>
@@ -150,7 +151,7 @@ const ArticlesLayout: React.FC<ArticlesLayoutProps> = ({
                 {cardType === "news" ? "notícia" : 
                  cardType === "events" ? "evento" : 
                  cardType === "internships" ? "estágio" :
-                 "artigo"}{" "}
+                 "artigo"}
                 {filteredArticles.length !== 1 ? "s" : ""} {" "}
                 { cardType === "news" ? "encontrada" : "encontrado"}
                 {filteredArticles.length !== 1 ? "s" : ""}

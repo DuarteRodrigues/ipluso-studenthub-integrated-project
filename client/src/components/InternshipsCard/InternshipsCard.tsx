@@ -14,6 +14,9 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
+// Import Styles
+import './InternshipsCard.css';
+
 // Declare types for props
 type InternshipsCardProps = {
   article: {
@@ -31,18 +34,31 @@ const InternshipsCard: React.FC<InternshipsCardProps> = ({ article }) => {
 
   return (
     <Link to={linkPath} className="InternshipsCardLink">
-        <div className="EventsCard">
-            <div className="EventsCardContent">
-                <h4 className="EventsCardTitle">{article.title}</h4>
-                <p className="EventsCardDesc">{article.description}</p>
-                <span className="EventsCardDate">{article.oportunityYear}</span>
-                {article.tags && article.tags.length > 0 && (
-                    <div className="EventsCardTags">
+        <div className="InternshipsCard">
+            <div className="InternshipsCardContent">
+                <h4 className="InternshipsCardTitle">{article.title}</h4>
+                <p className="InternshipsCardDesc"><b>Descrição:</b><br/>{article.context}<br/></p>
+
+                <p className="InternshipsCardEntity"><b>Entidade:</b> {article.entity}<br/></p>
+
+                <p className="InternshipsCardProf"><b>Professor:</b> {article.coordinatingProfessor.name}<br/></p>
+
+                
+                <div className="InternshipsCardMeta">
+                    <span className="InternshipsCardDate">Ano Letivo: {article.oportunityYear}</span>
+                    {article.tags && article.tags.length > 0 && (
+                    <div className="InternshipsCardTags">
                         {article.tags.map((tag, index) => (
-                            <span key={index} className="EventsCardTag">{tag}</span>
+                        <span key={index} className="InternshipsCardTag">
+                            {typeof tag === "number" || (!isNaN(Number(tag)) && tag !== "") 
+                            ? `${tag}º Ano` 
+                            : tag}
+                        </span>
                         ))}
                     </div>
                 )}
+                </div>
+
             </div>
         </div>
     </Link>

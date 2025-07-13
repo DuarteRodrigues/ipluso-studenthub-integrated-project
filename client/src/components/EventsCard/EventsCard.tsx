@@ -17,6 +17,9 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 
+// Import Styles
+import './EventsCard.css';
+
 // Declare types for props
 type EventsCardProps = {
   article: {
@@ -38,16 +41,18 @@ const EventsCard: React.FC<EventsCardProps> = ({ article }) => {
         <div className="EventsCard">
             <img src={article.thumbnail} alt={article.title} className="EventsCardThumb" />
             <div className="EventsCardContent">
-                <h4 className="EventsCardTitle">{article.title}</h4>
-                <p className="EventsCardDesc">{article.description}</p>
-                <span className="EventsCardDate">{article.date}</span>
-                {article.tags && article.tags.length > 0 && (
-                    <div className="EventsCardTags">
-                        {article.tags.map((tag, index) => (
-                            <span key={index} className="EventsCardTag">{tag}</span>
-                        ))}
-                    </div>
-                )}
+                <div className="EventsCardTitle">{article.title}</div>
+                <div className="EventsCardDesc">{article.description}</div>
+                <div className="EventsCardMeta">
+                    <span className="EventsCardDate">{article.date}</span>
+                    {article.tags && article.tags.length > 0 && (
+                        <div className="EventsCardTags">
+                            {article.tags.map((tag, index) => (
+                                <span key={index} className="EventsCardTag">{tag}</span>
+                            ))}
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     </Link>

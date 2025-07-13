@@ -50,7 +50,7 @@ const SpacePanel:React.FC = () => {
     <div className="SpacePanelHeader">
         <h2 className="SpacePanelTitle">Espaços</h2>
         <div style={{ color: "#666", marginBottom: "1.5rem", fontSize: "1.05rem", width: "100%", textAlign: "center" }}>
-            Descubra os nossos campus e as suas principais valências
+            Descubra os nossos campus e as suas principais valências!
         </div>
     </div>
 

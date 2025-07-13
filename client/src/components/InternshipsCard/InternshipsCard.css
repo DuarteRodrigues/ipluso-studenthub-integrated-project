@@ -1,0 +1,86 @@
+.InternshipsCardLink {
+    text-decoration: none;
+}
+
+.InternshipsCard{
+    background: #f7f7f7;
+    border-radius: 1.2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+    width: 100%
+}
+
+.InternshipsCard,
+.InternshipsCardContent {
+    box-sizing: border-box;
+}
+
+.InternshipsCardTitle {
+    color: #b0073b;
+    font-size: 1.5rem;
+    font-style: italic;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    margin-top: 0rem;
+}
+
+.InternshipsCardContent {
+    box-sizing: border-box;
+    flex: 1 1 0;
+    min-height: 0;
+    overflow-y: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1.2rem;
+    scrollbar-width: none;      /* Firefox */
+    -ms-overflow-style: none;   /* IE and Edge */
+}
+
+.InternshipsCardContent::-webkit-scrollbar {
+    display: none;              /* Chrome, Safari, Opera */
+}
+
+.InternshipsCardDesc, .InternshipsCardEntity, .InternshipsCardProf{
+    font-size: 1rem;
+    margin-bottom: 0rem;
+    color: #444;
+    text-align: justify;
+}
+
+.InternshipsCardMeta {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    gap: 0.3rem;
+}
+
+.InternshipsCardDate {
+    color: #888;
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.InternshipsCardTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.3rem;
+}
+
+.InternshipsCardTag {
+    background: #b0073b;
+    color: #fff;
+    border-radius: 0.8rem;
+    padding: 0.15em 0.8em;
+    font-size: 0.92rem;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: background 0.2s, color 0.2s;
+}

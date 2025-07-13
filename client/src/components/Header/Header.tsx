@@ -120,8 +120,6 @@ function Headers() {
         navigate("/"); //Redirect to main page after logout
     }
 
-    // Todo: Implement page redirect on successful login to user page only if login is successful on home page
-
     return (
         <header>
             <div className="HeaderLogo">

@@ -25,7 +25,7 @@ const NewsEventsPanel:React.FC = ({
     <>
         <div className="NewsEventsPanelHeader">
             <h2 >Notícias e Eventos</h2>
-            <div style={{ color: "#666", marginBottom: "1.5rem", fontSize: "1.05rem" }}>
+            <div className="NewsEventsPanelSubtitle">
                 Aqui estão as nossas notícias e eventos mais recentes!
             </div>
         </div>

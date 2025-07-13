@@ -17,6 +17,9 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
+// Import Styles
+import './NewsCard.css';
+
 // Declare types for props
 type NewsCardProps = {
   article: {
@@ -38,16 +41,18 @@ const NewsCard: React.FC<NewsCardProps> = ({article}) => {
         <div className="NewsCard">
             <img src={article.thumbnail} alt={article.title} className="NewsCardThumb" />
             <div className="NewsCardContent">
-            <h4 className="NewsCardTitle">{article.title}</h4>
-            <p className="NewsCardDesc">{article.description}</p>
-            <span className="NewsCardDate">{article.date}</span>
-            {article.tags && article.tags.length > 0 && (
-                <div className="NewsCardTags">
-                {article.tags.map((tag, index) => (
-                    <span key={index} className="NewsCardTag">{tag}</span>
-                ))}
+                <div className="NewsCardTitle">{article.title}</div>
+                <div className="NewsCardDesc">{article.description}</div>
+                <div className="NewsCardMeta">
+                    <span className="NewsCardDate">{article.date}</span>
+                    {article.tags && article.tags.length > 0 && (
+                        <div className="NewsCardTags">
+                        {article.tags.map((tag, index) => (
+                        <span key={index} className="NewsCardTag">{tag}</span>
+                        ))}
+                        </div>
+                    )}
                 </div>
-            )}
             </div>
         </div>
     </Link>

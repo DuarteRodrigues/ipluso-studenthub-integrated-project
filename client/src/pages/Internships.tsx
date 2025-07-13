@@ -40,12 +40,14 @@ function InternshipsPage() {
     refetchOnWindowFocus: true // (Default, but explicit for clarity)
   });
 
+  const sortedInternships = sortMostRecent(internships);
+
   return (
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <Header />
       <div style={{ flex: "1"}}>
         <InternshipsLayout 
-          internships={sortMostRecent(internships)}
+          internships={sortedInternships}
           internshipsLoading={internshipsLoading}
           internshipsError={internshipsError}
         />

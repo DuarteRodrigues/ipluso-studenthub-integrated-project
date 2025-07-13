@@ -34,3 +34,12 @@ nav {
 .Button a:hover {
   color: #b0073b;
 }
+
+@media (max-width: 768px) {
+  .Links{
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+  }
+}
+

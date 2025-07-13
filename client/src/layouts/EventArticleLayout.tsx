@@ -87,7 +87,9 @@ const EventArticleLayout: React.FC<EventArticleLayoutProps> = ({ article }) => {
                 <strong>Tags:</strong>{" "}
                 <div className="ArticleTagsList">
                   {article.tags.map((tag) => (
-                  <span key={tag} className="ArticleTag">{tag}</span>
+                  <span 
+                    key={tag} 
+                    className="ArticleTag">{tag}</span>
                   ))}
                 </div>
               </div>

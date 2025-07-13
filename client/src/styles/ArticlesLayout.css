@@ -51,8 +51,32 @@
 
 .ArticlesGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     width: 100%;
     margin-top: 1rem;
+}
+
+.ArticlesGrid > * {
+    display: flex;
+    flex-direction: column;
+    height: 420px;
+}
+
+@media (max-width: 768px) {
+
+    .ArticlesLayout h1 {
+        font-size: 4rem;
+        margin-top: 0rem;
+        margin-bottom: 0rem;
+    }
+
+    .ArticlesGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .ArticlesGrid > * {
+        height: auto; /* Allow cards to adjust height based on content */
+        min-height: 300px; /* Optional: ensures some height even if empty */
+    }
 }
