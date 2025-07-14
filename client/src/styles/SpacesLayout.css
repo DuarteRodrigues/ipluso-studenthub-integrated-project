@@ -1,0 +1,48 @@
+.SpacesLayout {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 2rem 1rem;
+}
+
+.SpacesLayout h1 {
+    font-style: italic;
+}
+
+.SpacesSubtitle {
+    color: #888;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.SpacesContentContainer {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.SpacesContent {
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+}
+
+.SpacesContent h3 {
+    color: #333;
+    font-size: 1.5rem;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+.SpacesContent p {
+    color: #555;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 0rem;
+}
+
+.SpacesContent ul {
+    margin-bottom: 1rem;
+    margin-top: 0rem;
+}

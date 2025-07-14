@@ -10,18 +10,16 @@ import React from "react";
 
 // Import needed components
 import Header from "../components/Header/Header.tsx";
+import SpacesLayout from "../layouts/SpacesLayout.tsx";
 import Footer from "../components/Footer/Footer.tsx";
 
 function SpacesPage() {
   return (
-    <div>
+    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <Header />
-      <h1>Spaces</h1>
-      <p>This is the Spaces page.</p>
-      <p>
-        Here you can find information about various spaces available for
-        students.
-      </p>
+      <div style={{ flex: "1" }}>
+        <SpacesLayout />
+        </div>
       <Footer />
     </div>
   );
