@@ -16,7 +16,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // Import needed Pages
 import HomePage from "./pages/Home.tsx";
 import FAQPage from "./pages/FAQPage.tsx";
-import ContactsPage from "./pages/Contacts.tsx";
 import EventsPage from "./pages/Events.tsx";
 import InternshipsPage from "./pages/Internships.tsx";
 import NewsPage from "./pages/News.tsx";
@@ -46,7 +45,6 @@ function App() {
         {/* Define the main routes for the application */}
         <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/contacts" element={<ContactsPage />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/internships" element={<InternshipsPage />} />

@@ -16,9 +16,7 @@ import WelcomeMessage from '../components/WelcomeMessage/WelcomeMessage.tsx';
 import NewsEventsPanel from '../components/NewsEventsPanel/NewsEventsPanel.tsx';
 import InternshipsPanel from '../components/InternshipsPanel/InternshipsPanel.tsx';
 import SpacePanel from '../components/SpacePanel/SpacePanel.tsx';
-
-// Todo: Add a Carousel with cards for the internship oportunities
-// Todo: Add a section for the contacts
+import ContactsPanel from '../components/ContactsPanel/ContactsPanel.tsx';
 
 const HomeLayout = ({news, newsLoading, newsError, events, eventsLoading, eventsError, internships, internshipsLoading, internshipsError}) => {
   return (
@@ -40,6 +38,7 @@ const HomeLayout = ({news, newsLoading, newsError, events, eventsLoading, events
           internshipsError={internshipsError}
         />
         <SpacePanel />
+        <ContactsPanel />
     </>
   );
 };
