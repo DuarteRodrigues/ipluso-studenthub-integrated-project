@@ -1,0 +1,199 @@
+.ProfileAdminContainer {
+  display: flex;
+  gap: 2rem;
+  margin: 2rem auto;
+  max-width: 900px;
+}
+
+.ProfileAdminSidebar {
+    width: 220px;
+    max-height: max-content;
+    min-height: auto; /* fixed height in rem */
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ProfileAdminAvatar img {
+  background-color: black;
+  width: 80px;
+  height: 80px;
+  border: 2px solid #b0073b;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+}
+
+.ProfileAdminAvatar h2 {
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  font-style: italic;
+  color: #b0073b;
+}
+
+.ProfileAdminMain {
+    flex: 1;
+    background: #fff;
+    border-radius: 1rem;
+    padding: 0.2rem 1rem;
+    min-height: 0;
+    height: 100%;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+    display: flex;
+    flex-direction: column;
+}
+
+.ProfileAdminContent {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+    height: 100%;
+}
+
+.ProfileAdminContent ul {
+    height: 700px; /* or whatever fits your design */
+    overflow-y: auto;
+    margin: 0.5rem 0 0;
+    padding: 0;
+    list-style: none;
+} 
+
+.ProfileAdminContent li {
+    align-items: center;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    margin-bottom: 1rem;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.ProfileAdminContent li:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.ProfileAdminContent li:hover .ProfileAdminArticleActions button {
+    display: block;
+}
+
+.ProfileAdminContentHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    flex-shrink: 0;
+} 
+
+.ProfileAdminContentHeader p {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 0;
+}
+
+.ProfileAdminContentHeader button {
+    text-align: center;
+    justify-content: center;
+    background-color: #b0073b;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, displa;
+}
+
+.ProfileAdminContentHeader button:hover {
+    background-color: #a00632;
+}
+
+.ProfileAdminArticle {
+    display: flex;
+    flex-direction: column;
+    gap: 0rem
+}
+
+.ProfileAdminArticle p {
+    margin: 0.5rem;
+}
+.ProfileAdminArticleActions {
+    display:flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+
+.ProfileAdminArticleActions button {
+    display: none;
+    text-align: center;
+    justify-content: center;
+    background-color: #b0073b;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    margin: 0 1rem;
+    transition: background-color 0.3s ease, display 0.3s ease;
+}
+
+.ProfileAdminModalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+@media (max-width: 768px) {
+    .ProfileAdminContainer {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .ProfileAdminSidebar {
+        height: auto;
+        padding: 1rem 1rem 0rem;
+        width: 80%;
+        margin-bottom: 0rem;
+    }
+
+    .ProfileAdminSidebar img {
+        margin-bottom: 0;
+    }
+
+    .ProfileAdminSidebar h2 {
+      margin: 0;
+    }
+
+    .ProfileAdminAvatar {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      justify-content: flex-start;
+      margin-left: 1.5rem;
+      width: 100%;
+    }
+
+    .ProfileAdminInfo {
+        margin-left: 1.5rem;
+        justify-content: flex-start;
+        width: 100%;
+    }
+
+    .ProfileAdminMain {
+        width: 80%;
+    }
+}

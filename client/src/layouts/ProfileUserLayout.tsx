@@ -84,7 +84,7 @@ const ProfileUserLayout: React.FC<{ userData: any }> = ({ userData }) => {
                         Eventos
                     </button>
                 </div>
-                <div className = "ProfileUSerTabContent">
+                <div className = "ProfileUserTabContent">
                     {activeTab === 'news' ? (
                         <div>
                             <p>Estas são as notícias com que interagiste!</p>

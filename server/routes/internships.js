@@ -26,6 +26,39 @@ router.get("/internships", async (req, res) => {
     }
 });
 
+router.post("/internships", async (req, res) => {
+    console.log("[Internships] Received request to create a new internship");
+    try {
+        const collection = db.collection("internships");
+        const { title, description, entity, coordinatingProfessor, oportunityYear, context, hours, year, requiredECTS, location, tags} = req.body;
+
+        const newArticle = {
+            title,
+            description,
+            entity,
+            coordinatingProfessor: typeof coordinatingProfessor === "object" ? coordinatingProfessor : {},
+            oportunityYear,
+            context,
+            hours,
+            year,
+            requiredECTS,
+            location,
+            tags: Array.isArray(tags) ? tags : [],
+            feedback: []
+        };
+
+        const result = await collection.insertOne(newArticle);
+        res.status(201).json({
+            message: "Estágio criado com sucesso.",
+            articleId: result.insertedId,
+            article: newArticle
+        });
+    } catch (error) {
+        console.error("[Internships] Error creating internship:", error);
+        res.status(500).json({ message: "Erro ao criar estágio." });
+    }
+})
+
 router.get("/internships/article/:id", async (req, res) => {
     console.log(`[Internships] Received request for article with ID: ${req.params.id}`);
     try {
@@ -36,6 +69,50 @@ router.get("/internships/article/:id", async (req, res) => {
     } catch (error) {
         console.error(`[Internships] Error fetching article with ID ${req.params.id}:`, error);
         res.status(500).json({ message: "Erro ao buscar artigo." });
+    }
+});
+
+router.patch("/internships/article/:id", async (req, res) => {
+    console.log(`[Internships] Received request to update article with ID: ${req.params.id}`);
+    try {
+        const collection = db.collection("internships");
+        const query = { _id: new ObjectId(req.params.id) };
+        const update = { $set: req.body }; 
+
+        console.log(`[Internships] Update query for article ID ${req.params.id}:`, update);
+        const result = await collection.updateOne(query, update);
+
+        if (result.matchedCount === 0) {
+            return res.status(404).json({ message: "Artigo não encontrado" });
+        }
+
+        const updatedArticle = await collection.findOne(query);
+
+        res.status(200).json({
+            message: "Artigo atualizado com sucesso.",
+            article: updatedArticle
+        })
+
+    } catch (error) {
+        console.error(`[Internships] Error updating article with ID ${req.params.id}:`, error);
+        res.status(500).json({ message: "Erro ao atualizar artigo." });
+    }
+});
+
+router.delete("/internships/article/:id", async (req, res) => {
+    const articleId = req.params.id;
+    try {
+        const collection = db.collection("internships");
+        const result = await collection.deleteOne({ _id: new ObjectId(articleId) });
+
+        if (result.deletedCount === 0) {
+            return res.status(404).json({ message: "Estágio não encontrado." });
+        }
+
+        res.status(200).json({ message: "Estágio deletado com sucesso." });
+    } catch (error) {
+        console.error(`[Internships] Error deleting article with ID ${articleId}:`, error);
+        res.status(500).json({ message: "Erro ao excluir estágio." });
     }
 });
 
@@ -124,6 +201,27 @@ router.get("/internships/article/:id/feedback", async (req, res) => {
     } catch (error) {
         console.error(`[Internships] Error fetching feedback for article ID ${articleId}:`, error);
         res.status(500).json({ message: "Erro ao buscar feedback." });
+    }
+});
+
+// Get all news tags
+router.get("/internships/tags", async (req, res) => {
+    try {
+        const collection = db.collection("internships");
+        const result = await collection.aggregate([
+            { $project: { tags: 1 } },
+            { $unwind: "$tags" },
+            { $group: { _id: null, tags: { $addToSet: "$tags" } } },
+            { $project: { _id: 0, tags: 1 } }
+        ]).toArray();
+
+        const tags = result[0]?.tags || [];
+        console.log("[Internships] Fetched tags:", tags);
+
+        res.status(200).json(tags);
+    } catch (error) {
+        console.error("[Internships] Error fetching tags:", error);
+        res.status(500).json({ message: "Erro ao buscar tags." });
     }
 });
 

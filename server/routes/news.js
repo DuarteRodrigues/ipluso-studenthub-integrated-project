@@ -25,6 +25,43 @@ router.get("/news", async (req, res) => {
     }
 });
 
+router.post("/news", async (req, res) => {
+    console.log("[News] Received request to create a new article");
+    try {
+        const collection = db.collection("news");
+        const { title, description, content, author, tags, thumbnail, date } = req.body;
+
+        console.log("[News] Request body:", req.body);
+
+        // Basic validation
+        if (!title || !description || !content || !author || !tags) {
+            return res.status(400).json({ message: "Todos os campos obrigatórios devem ser preenchidos." });
+        }
+
+        const newArticle = {
+            title,
+            description,
+            content,
+            author,
+            date,
+            tags: Array.isArray(tags) ? tags : [],
+            thumbnail: thumbnail || null,
+            feedback: []
+        };
+
+        const result = await collection.insertOne(newArticle);
+
+        res.status(201).json({
+            message: "Notícia criada com sucesso.",
+            articleId: result.insertedId,
+            article: newArticle
+        });
+    } catch (error) {
+        console.error("[News] Error creating article:", error);
+        res.status(500).json({ message: "Erro ao criar notícia." });
+    }
+});
+
 router.get("/news/article/:id", async (req, res) => {
     console.log(`[News] Received request for article with ID: ${req.params.id}`);
     try {
@@ -37,6 +74,87 @@ router.get("/news/article/:id", async (req, res) => {
         res.status(500).json({ message: "Erro ao buscar artigo." });
     }
 });
+
+router.patch("/news/article/:id", async (req, res) => {
+    console.log(`[News] Received request to update article with ID: ${req.params.id}`);
+    try {
+        const collection = db.collection("news");
+        const query = {_id: new ObjectId(req.params.id) };
+        const update = { $set: req.body } ;
+
+        console.log(`[News] Update query for article ID ${req.params.id}:`, update);
+        const result = await collection.updateOne(query, update);
+
+        if (result.matchedCount === 0) {
+            return res.status(404).json({ message: "Artigo não encontrado." });
+        }
+
+        const updatedArticle = await collection.findOne(query);
+
+        res.status(200).json({
+            message: "Artigo atualizado com sucesso.",
+            article: updatedArticle
+        }); 
+
+    } catch (error) {
+        console.log(`[News] Error updating article with ID ${req.params.id}:`, error);
+        res.status(500).send("Error updating article");
+    }
+});
+
+router.delete("/news/article/:id", async (req, res) => {
+    const articleId = req.params.id;
+    try {
+        const collection = db.collection("news");
+        const result = await collection.deleteOne({ _id: new ObjectId(articleId) });
+        if (result.deletedCount === 0) {
+            return res.status(404).json({ message: "Notícia não encontrada." });
+        }
+        res.status(200).json({ message: "Notícia excluída com sucesso." });
+    } catch (error) {
+        console.error(`[News] Error deleting article with ID ${articleId}:`, error);
+        res.status(500).json({ message: "Erro ao excluir notícia." });
+    }
+});
+
+router.delete("/news/article/:id", async (req, res) => {
+    const articleId = req.params.id;
+    try {
+        const collection = db.collection("events");
+        const result = await collection.deleteOne({ _id: new ObjectId(articleId) });
+        if (result.deletedCount === 0) {
+            return res.status(404).json({ message: "Notícia não encontrada." });
+        }
+        res.status(200).json({ message: "Notícia excluída com sucesso." });
+    } catch (error) {
+        console.error(`[News] Error deleting article with ID ${articleId}:`, error);
+        res.status(500).json({ message: "Erro ao excluir notícia." });
+    }
+});
+
+router.get("/news/article/:id/feedback", async (req, res) => {
+    const articleId = req.params.id;
+    const userId = req.query.userId;
+    try {
+        const collection = db.collection("news");
+        const article = await collection.findOne({ _id: new ObjectId(articleId) });
+        if (!article) return res.status(404).json({ message: "Notícia não encontrada." });
+
+        // Count feedback
+        const feedbackCount = { like: 0, wow: 0, congrats: 0 };
+        let userFeedback = null;
+        (article.feedback || []).forEach(f => {
+            if (feedbackCount[f.type] !== undefined) feedbackCount[f.type]++;
+            if (f.userId.toString() === userId) userFeedback = f.type;
+        });
+
+        res.json({ feedbackCount, userFeedback });
+    } catch (error) {
+        console.error(`[News] Error fetching feedback for article ID ${articleId}:`, error);
+        res.status(500).json({ message: "Erro ao buscar feedback." });
+    }
+});
+
 
 router.post("/news/article/:id/feedback", async (req, res) => {
     const { userId, type } = req.body;
@@ -104,29 +222,6 @@ router.post("/news/article/:id/feedback", async (req, res) => {
     }
 });
 
-router.get("/news/article/:id/feedback", async (req, res) => {
-    const articleId = req.params.id;
-    const userId = req.query.userId;
-    try {
-        const collection = db.collection("news");
-        const article = await collection.findOne({ _id: new ObjectId(articleId) });
-        if (!article) return res.status(404).json({ message: "Notícia não encontrada." });
-
-        // Count feedback
-        const feedbackCount = { like: 0, wow: 0, congrats: 0 };
-        let userFeedback = null;
-        (article.feedback || []).forEach(f => {
-            if (feedbackCount[f.type] !== undefined) feedbackCount[f.type]++;
-            if (f.userId.toString() === userId) userFeedback = f.type;
-        });
-
-        res.json({ feedbackCount, userFeedback });
-    } catch (error) {
-        console.error(`[News] Error fetching feedback for article ID ${articleId}:`, error);
-        res.status(500).json({ message: "Erro ao buscar feedback." });
-    }
-});
-
 router.get("/news/interacted/:userId", async (req, res) => {
     const userId = req.params.userId;
     try {
@@ -142,4 +237,25 @@ router.get("/news/interacted/:userId", async (req, res) => {
     }
 });
 
+// Get all news tags
+router.get("/news/tags", async (req, res) => {
+    try {
+        const collection = db.collection("news");
+        const result = await collection.aggregate([
+            { $project: { tags: 1 } },
+            { $unwind: "$tags" },
+            { $group: { _id: null, tags: { $addToSet: "$tags" } } },
+            { $project: { _id: 0, tags: 1 } }
+        ]).toArray();
+
+        const tags = result[0]?.tags || [];
+        console.log("[News] Fetched tags:", tags);
+
+        res.status(200).json(tags);
+    } catch (error) {
+        console.error("[News] Error fetching tags:", error);
+        res.status(500).json({ message: "Erro ao buscar tags." });
+    }
+});
 export default router;
+

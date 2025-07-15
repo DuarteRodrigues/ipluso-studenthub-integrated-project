@@ -4,6 +4,7 @@ import { ObjectId } from "mongodb"; // Import ObjectId for MongoDB document ID h
 
 // * This will help us to connect to the database
 import db from "../database/connection.js";
+import { isQualifiedName } from "typescript";
 
 /**
  * * router is a built-in middleware function in Express. It is used to create a new router object
@@ -25,6 +26,41 @@ router.get("/events", async (req, res) => {
     }
 });
 
+router.post("/events", async (req, res) => {
+    console.log("[Events] Received request to create a new event");
+    try {
+        const collection = db.collection("events");
+        const { title, description, content, tags, thumbnail, date } = req.body;
+
+        console.log("[Events] Request body:", req.body);
+
+        // Basic validation
+        if (!title || !description || !content || !tags) {
+            return res.status(400).json({ message: "Todos os campos obrigatórios devem ser preenchidos." });
+        }
+
+        const newArticle = {
+            title,
+            description,
+            content,
+            date,
+            tags: Array.isArray(tags) ? tags : [],
+            thumbnail: thumbnail || null,
+            feedback: []
+        };
+
+        const result = await collection.insertOne(newArticle);
+        res.status(201).json({
+            message: "Evento criado com sucesso.",
+            articleId: result.insertedId,
+            article: newArticle
+        });
+    } catch (error) {
+        console.error("[Events] Error creating event:", error);
+        res.status(500).json({ message: "Erro ao criar evento." });
+    }
+})
+
 router.get("/events/article/:id", async (req, res) => {
     console.log(`[Events] Received request for article with ID: ${req.params.id}`);
     try {
@@ -35,6 +71,48 @@ router.get("/events/article/:id", async (req, res) => {
     } catch (error) {
         console.error(`[Events] Error fetching article with ID ${req.params.id}:`, error);
         res.status(500).json({ message: "Erro ao buscar artigo." });
+    }
+});
+
+router.patch("/events/article/:id", async (req, res) => {
+    console.log(`[Events] Received request to update article with ID: ${req.params.id}`);
+    try {
+        const collection = db.collection("events");
+        const query = { _id: new ObjectId(req.params.id) };
+        const update = { $set: req.body };
+
+        console.log(`[Events] Update query for article ID ${req.params.id}:`, update);
+        const result = await collection.updateOne(query, update);
+
+        if (result.modifiedCount === 0) {
+            return res.status(404).json({ message: "Evento não encontrado ou nenhum campo foi modificado." });
+        }
+
+        const updatedArticle = await collection.findOne(query);
+
+        res.status(200).json({ 
+            message: "Evento atualizado com sucesso." ,
+            article: updatedArticle
+        });
+
+    } catch (error) {
+        console.error(`[Events] Error updating article with ID ${req.params.id}:`, error);
+        res.status(500).json({ message: "Erro ao atualizar artigo." });
+    }
+})
+
+router.delete("/events/article/:id", async (req, res) => {
+    const articleId = req.params.id;
+    try {
+        const collection = db.collection("events");
+        const result = await collection.deleteOne({ _id: new ObjectId(articleId) });
+        if (result.deletedCount === 0) {
+            return res.status(404).json({ message: "Notícia não encontrada." });
+        }
+        res.status(200).json({ message: "Notícia excluída com sucesso." });
+    } catch (error) {
+        console.error(`[Events] Error deleting article with ID ${articleId}:`, error);
+        res.status(500).json({ message: "Erro ao excluir notícia." });
     }
 });
 
@@ -135,6 +213,27 @@ router.get("/events/interacted/:userId", async (req, res) => {
         res.json(events || []);
     } catch (error) {
         res.status(500).json([]);
+    }
+});
+
+// Get all news tags
+router.get("/events/tags", async (req, res) => {
+try {
+        const collection = db.collection("news");
+        const result = await collection.aggregate([
+            { $project: { tags: 1 } },
+            { $unwind: "$tags" },
+            { $group: { _id: null, tags: { $addToSet: "$tags" } } },
+            { $project: { _id: 0, tags: 1 } }
+        ]).toArray();
+
+        const tags = result[0]?.tags || [];
+        console.log("[Events] Fetched tags:", tags);
+
+        res.status(200).json(tags);
+    } catch (error) {
+        console.error("[Events] Error fetching tags:", error);
+        res.status(500).json({ message: "Erro ao buscar tags." });
     }
 });
 
