@@ -15,7 +15,7 @@ import PalacioVimioso from "../../assets/images/Palácio_do_Conde_de_Vimioso.jpg
 // Import Styles
 import "./TitleCard.css";
 
-export default function TitleCard() {
+const TitleCard: React.FC = () =>{
   return (
     <div className="wrapper">
       <img src={PalacioVimioso} alt="Vimioso"></img>
@@ -28,3 +28,5 @@ export default function TitleCard() {
     </div>
   );
 }
+
+export default TitleCard;

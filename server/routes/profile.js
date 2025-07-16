@@ -1,3 +1,10 @@
+/**
+ * @file profile.js
+ * @description This file contains the routes for managing user profiles in the application.
+ * 
+ * @returns {express.Router} An Express router object that handles profile-related routes.
+ */
+
 // * Import necessary modules
 import express from "express";
 import { ObjectId } from "mongodb";

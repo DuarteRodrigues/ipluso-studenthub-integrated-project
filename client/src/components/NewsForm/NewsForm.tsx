@@ -23,7 +23,27 @@ const existingTags = await fetchTags(apiURL, "news");
 
 console.log("Existing Tags:", existingTags);
 
-const NewsForm = ({ onClose, article, setLocalNews }) => {
+// Define the ArticleType type
+type ArticleType = {
+  _id?: string;
+  title: string;
+  description: string;
+  content: string;
+  author: string;
+  tags?: string[];
+  thumbnail?: string;
+  feedback?: any[];
+  date?: string;
+};
+
+// Define the type for the article
+type NewsFormProps = {
+  onClose: () => void; // Function to close the form
+  article: ArticleType | null; // The article being edited, or null for a new article
+  setLocalNews: React.Dispatch<React.SetStateAction<ArticleType[]>>; // Function to update local news state
+};
+
+const NewsForm: React.FC<NewsFormProps>= ({ onClose, article, setLocalNews }) => {
 
   console.log("NewsForm Mounted");
 

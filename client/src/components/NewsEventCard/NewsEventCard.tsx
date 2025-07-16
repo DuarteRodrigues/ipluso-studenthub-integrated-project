@@ -20,6 +20,7 @@ type NewsEventCardProps = {
     title: string;
     description: string;
     date: string;
+    thumbnail: string; // URL for the thumbnail image
     type: "news" | "event"; // Type of the card, either news or event
 };
 

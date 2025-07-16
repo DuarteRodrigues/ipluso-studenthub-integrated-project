@@ -23,7 +23,7 @@ const internalLinks = [
   { label: "Contatos", url: "/contacts" },
 ];
 
-export default function Navbar() {
+const Navbar: React.FC = () => {
   return (
     <nav className="Navbar">
       <div className="Links">
@@ -36,3 +36,5 @@ export default function Navbar() {
     </nav>
   );
 }
+
+export default Navbar;

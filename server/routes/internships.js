@@ -1,3 +1,10 @@
+/**
+ * @file internships.js
+ * @description This file contains the routes for handling internship-related operations.
+ * 
+ * @returns {express.Router} An Express router object that handles internship-related routes.
+ */
+
 // * Import necessary modules
 import express from "express";
 import { ObjectId } from "mongodb"; // Import ObjectId for MongoDB document ID handling

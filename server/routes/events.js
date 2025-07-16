@@ -1,3 +1,10 @@
+/**
+ * @file events.js
+ * @description This file contains the routes for handling events-related operations.
+ * 
+ * @returns {express.Router} An Express router object that handles events-related routes.
+ */
+
 // * Import necessary modules
 import express from "express";
 import { ObjectId } from "mongodb"; // Import ObjectId for MongoDB document ID handling

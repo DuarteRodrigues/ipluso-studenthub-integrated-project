@@ -1,8 +1,7 @@
 /**
  * @file index.js
  * @description Entry point for the IPLuso StudentHub Integrated Project React application.
- * Initializes the root React component and renders the main App component.
- * Imports global styles and sets up the application for client-side rendering.
+ * Renders the main App component and imports global styles.
  */
 
 import React from "react";

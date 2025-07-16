@@ -44,24 +44,26 @@ Keep this folder focused on UI building blocks to ensure consistency and maintai
 
 ## Implemented Components
 
-### Navbar
+Below is a summary of the main components available in this folder:
 
-- **Files:** `Navbar.jsx`, `Navbar.css`
-- **Description:** The main navigation bar for the application, includes navigation links and styled buttons with hover effects.
-
-### Header
-
-- **Files:** `Header.jsx`, `Header.css`
-- **Description:** The top section of the app, typically includes the logo and dropdown menus for navigation.
-
-### Footer
-
-- **Files:** `Footer.jsx`, `Footer.css`
-- **Description:** A simple footer that sits at the bottom of the page, ready for additional information or links.
-
-### TitleCard
-
-- **Files:** `TitleCard.jsx`, `TitleCard.css`
-- **Description:** A full-width image card with a centered, animated title and optional subtitle, featuring a color overlay for readability.
+- **ContactsPanel:** Displays key contact information for the institution, including phone numbers, emails, and office locations.
+- **CookieConsent:** Manages cookie consent banners, allowing users to accept or decline cookies and storing their preferences.
+- **EventsCard:** Presents event details such as title, date, description, and location in a visually appealing card format.
+- **EventsForm:** Provides a form interface for creating or editing event entries, supporting validation and submission.
+- **Footer:** Renders the application’s footer, including copyright information and useful links.
+- **Header:** Displays the top navigation/header bar, often including branding and quick access links.
+- **InternshipsCard:** Showcases internship opportunities with details like position, company, and application deadline.
+- **InternshipsForm:** Allows users to submit or edit internship listings, with fields for relevant information.
+- **InternshipsPanel:** Lists available internships, supporting filtering and sorting options.
+- **Navbar:** Implements the main navigation bar, enabling users to move between different sections of the app.
+- **NewsCard:** Displays news articles with headline, summary, and publication date.
+- **NewsEventCard:** Combines news and event information into a unified card for streamlined presentation.
+- **NewsEventsPanel:** Aggregates and lists news and event items, often with pagination or filtering.
+- **NewsForm:** Form for creating or editing news articles, including fields for title, content, and images.
+- **ProfileInteractedList:** Shows a list of items (such as events or internships) the user has interacted with.
+- **ProfileInteractedListItem:** Represents an individual item in the user’s interacted list, with quick actions.
+- **SpacePanel:** Displays information about academic spaces and resources, such as classrooms or labs.
+- **TitleCard:** Highlights the main title and image of the project, serving as a visual introduction.
+- **WelcomeMessage:** Greets users with a customizable welcome message upon entry to the application.
 
 ---

@@ -1,3 +1,13 @@
+/**
+ * @file server.js
+ * @description This file sets up the Express server and configures the routes for the application.
+ * 
+ * @requires express
+ * @requires cors
+ */
+
+
+// Importing necessary modules and routes
 import express from "express";
 import cors from "cors";
 import records from "./routes/record.js";

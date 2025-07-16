@@ -18,7 +18,7 @@ Esta é a plataforma digital que centraliza os serviços e informações mais re
 Aqui podes consultar eventos, estágios, espaços académicos, contactos úteis e outras ferramentas que te ajudam a estar sempre ligado à tua instituição.
 `;
 
-const WelcomeMessage = () => (
+const WelcomeMessage: React.FC = () => (
     <div className="WelcomeMessage">
         <p>
           {WELCOME_MESSAGE.split('\n').map((line, idx) =>

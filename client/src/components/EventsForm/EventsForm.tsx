@@ -23,7 +23,26 @@ const existingTags = await fetchTags(apiURL, "events");
 
 console.log("Existing Tags:", existingTags);
 
-const EventsForm = ({ onClose, article, setLocalEvents}) => {
+// Define the ArticleType type
+type ArticleType = {
+  _id?: string;
+  title: string;
+  description: string;
+  content: string;
+  tags?: string[];
+  thumbnail?: string;
+  feedback?: any[];
+  date?: string;
+};
+
+// Define the type for the article
+type EventsFormProps = {
+  onClose: () => void; // Function to close the form
+  article: ArticleType | null; // The article being edited, or null for a new article
+  setLocalEvents: React.Dispatch<React.SetStateAction<ArticleType[]>>; // Function to update local events state
+};
+
+const EventsForm: React.FC<EventsFormProps> = ({ onClose, article, setLocalEvents }) => {
 
   console.log("EventsForm Mounted");
 

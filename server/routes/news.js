@@ -1,3 +1,10 @@
+/**
+ * @file news.js
+ * @description This file contains the routes for managing news articles in the application.
+ * 
+ * @returns {express.Router} An Express router object that handles news-related routes.
+ */
+
 // * Import necessary modules
 import express from "express";
 import { ObjectId } from "mongodb"; // Import ObjectId for MongoDB document ID handling

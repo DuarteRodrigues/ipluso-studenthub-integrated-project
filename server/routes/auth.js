@@ -1,3 +1,10 @@
+/**
+ * @file auth.js
+ * @description This file contains the authentication routes for user login.
+ * 
+ * @returns {express.Router} The router object that handles authentication routes.
+ */
+
 import express from "express";
 
 // * This will help us to connect to the database

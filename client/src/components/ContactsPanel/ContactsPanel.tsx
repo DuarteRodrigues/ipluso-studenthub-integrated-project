@@ -6,16 +6,16 @@
  * @returns {JSX.Element} The ContactsPanel component.
  */
 
-//Import Packages
-import React from 'react'
+// Import Packages
+import React from 'react';
 
-//Import Styles
-import './ContactsPanel.css'
+// Import Styles
+import './ContactsPanel.css';
 
 // Import Assets
 import IplusoLogoInverse from '../../assets/images/ipluso-logotipo-inverse.svg';
 
-const ContactsPanel = () => {
+const ContactsPanel: React.FC = () => {
   return (
     <div className="ContactsPanel">
       <h2>Contactos</h2>
@@ -29,11 +29,11 @@ const ContactsPanel = () => {
           </ul>
         </div>
         <div>
-          <img src={IplusoLogoInverse} alt="IPLuso Logo" />
+          <img src={IplusoLogoInverse as string} alt="IPLuso Logo" />
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ContactsPanel
+export default ContactsPanel;

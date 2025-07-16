@@ -17,6 +17,11 @@ This is the main stack of technologies used in this project.
   <img src = "https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white" alt = "NodeJS">
 </p>
 
+- **MongoDB**: NoSQL database for storing user data, news, events, and more.
+- **Express.js**: Backend framework for building the API.
+- **React**: Frontend library for building the user interface.
+- **Node.js**: JavaScript runtime for the backend server.
+
 ---
 
 This repository stores the source code, documentation, and system models required for the development of the StudentHub!

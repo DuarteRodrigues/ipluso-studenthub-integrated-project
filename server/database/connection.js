@@ -1,3 +1,11 @@
+/**
+ * @file connection.js
+ * @description This file establishes a connection to the MongoDB database using the MongoDB Node.js
+ * 
+ * @returns {Promise<MongoClient>} A promise that resolves to the MongoDB client instance.
+ * @see https://mongodb.github.io/node-mongodb-native/4.9/classes/MongoClient.html
+ */
+
 import { MongoClient, ServerApiVersion } from "mongodb";
 
 const uri = process.env.ATLAS_URI || "";

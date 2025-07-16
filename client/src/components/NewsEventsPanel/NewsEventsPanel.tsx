@@ -16,7 +16,17 @@ import NewsEventCard from "../NewsEventCard/NewsEventCard.tsx";
 // Import Styles
 import "./NewsEventsPanel.css";
 
-const NewsEventsPanel:React.FC = ({
+// Declare types for props
+type NewsEventsPanelProps = {
+    news?: any[]; // Array of news articles
+    newsLoading?: boolean; // Loading state for news
+    newsError?: Error | null; // Error state for news
+    events?: any[]; // Array of events
+    eventsLoading?: boolean; // Loading state for events
+    eventsError?: Error | null; // Error state for events
+}
+
+const NewsEventsPanel:React.FC<NewsEventsPanelProps> = ({
         news = [], newsLoading = false, newsError = null,
         events = [], eventsLoading = false, eventsError = null
         }) => {

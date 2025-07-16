@@ -24,7 +24,36 @@ const existingTags = await fetchTags(apiURL, "internships");
 
 console.log("Existing Tags:", existingTags); 
 
-const InternshipsForm = ({ onClose, article, setLocalInternships }) => {
+// Define the ArticleType type (adjust fields as needed)
+type ArticleType = {
+  _id?: string;
+  title: string;
+  description: string;
+  entity: string;
+  coordinatingProfessor?: {
+    name: string;
+    email: string;
+  };
+  context: string;
+  hours: number | string;
+  year: number | string;
+  requiredECTS: number | string;
+  location: string;
+  tags?: string[];
+  thumbnail?: string;
+  feedback?: any[];
+  date?: string;
+};
+
+// Define the type for the article
+type InternshipsFormProps = {
+  onClose: () => void; // Function to close the form
+  article: ArticleType | null; // The article being edited, or null for a new article
+  setLocalEvents: React.Dispatch<React.SetStateAction<ArticleType[]>>; // Function to update local events state
+};
+
+
+const InternshipsForm: React.FC<InternshipsFormProps> = ({ onClose, article, setLocalInternships }) => {
 
   console.log("InternshipsForm Mounted");
 

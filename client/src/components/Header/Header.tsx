@@ -53,7 +53,7 @@ const externalLinks: ExternalLink[] = [
     {label: "AEIPLuso", url: "https://aeipluso.pt/", icon: aeiplusoLogo}
 ];
 
-function Headers() {
+const Headers: React.FC = () => {
 
     // Initialize state from cookie, default to PT
     const [isEnglish, setEnglish] = useState(() => getCookie("language") === "en" ? true : false);

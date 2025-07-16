@@ -12,7 +12,7 @@ import React from "react";
 // Importing Styles
 import "./Footer.css";
 
-export default function Footer() {
+const Footer: React.FC = () => {
   return (
     <footer>
       <small>
@@ -22,3 +22,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+export default Footer;
