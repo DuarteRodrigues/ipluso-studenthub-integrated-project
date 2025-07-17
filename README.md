@@ -25,3 +25,14 @@ This is the main stack of technologies used in this project.
 ---
 
 This repository stores the source code, documentation, and system models required for the development of the StudentHub!
+
+### Used Extensions
+
+- **Better Comments**: Improves code readability by highlighting and categorizing annotations (e.g., TODO, FIXME, etc.) in your code comments.
+- **MongoDB For Visual Studio Code**: Provides a rich interface for connecting to MongoDB databases, browsing collections, and running queries directly from VS Code.
+- **colorize**: Highlights and previews CSS colors and variables inline in your code, making it easier to work with color values.
+- **Error Lens**: Enhances error and warning visibility by highlighting them directly in the editor, making debugging faster and more intuitive.
+- **git Graph**: Visualizes your repository’s commit history and branches in a graph format, making it easier to manage and understand your Git workflow.
+- **Image Preview**: Allows you to preview image files directly in the editor, supporting a wide range of image formats.
+- **Markdown Preview Advanced**: Offers enhanced Markdown preview features, including support for diagrams, custom styles, and exporting to various formats.
+- **ES7 + React / Redux / React-Native Snippets**: Provides a comprehensive set of code snippets for React, Redux, and React Native development, speeding up component and hook creation.
