@@ -17,7 +17,7 @@ import IplusoLogoInverse from '../../assets/images/ipluso-logotipo-inverse.svg';
 
 const ContactsPanel: React.FC = () => {
   return (
-    <div className="ContactsPanel">
+    <div className="ContactsPanel" id='contacts'>
       <h2>Contactos</h2>
       <p>Para mais informações, por favor contacte-nos através dos seguintes meios:</p>
       <div className="ContactsPanelContent">

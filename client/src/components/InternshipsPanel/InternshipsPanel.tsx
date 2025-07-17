@@ -16,8 +16,8 @@ import InternshipsCard from '../InternshipsCard/InternshipsCard.tsx';
 import './InternshipsPanel.css';
 
 const InternshipsPanel: React.FC = ({ 
-    internships = [], 
-    internshipsLoading = false,
+     internships = [], 
+     internshipsLoading = false,
      internshipsError = null 
     }) => {
     if (internshipsLoading) {

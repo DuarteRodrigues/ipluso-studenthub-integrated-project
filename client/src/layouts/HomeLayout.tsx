@@ -38,7 +38,7 @@ const HomeLayout = ({news, newsLoading, newsError, events, eventsLoading, events
           internshipsError={internshipsError}
         />
         <SpacePanel />
-        <ContactsPanel />
+        <ContactsPanel  />
     </>
   );
 };

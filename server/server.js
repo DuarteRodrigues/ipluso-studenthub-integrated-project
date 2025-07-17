@@ -10,7 +10,6 @@
 // Importing necessary modules and routes
 import express from "express";
 import cors from "cors";
-import records from "./routes/record.js";
 import auth from "./routes/auth.js";
 import newsData from "./routes/news.js";
 import eventsData from "./routes/events.js";

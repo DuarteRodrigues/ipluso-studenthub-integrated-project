@@ -20,7 +20,7 @@ const internalLinks = [
   { label: "Estágios", url: "/internships" },
   { label: "Espaços", url: "/spaces" },
   { label: "FAQ", url: "/faq" },
-  { label: "Contatos", url: "/contacts" },
+  { label: "Contatos", url: "#contacts" },
 ];
 
 const Navbar: React.FC = () => {
@@ -29,7 +29,11 @@ const Navbar: React.FC = () => {
       <div className="Links">
         {internalLinks.map((link) => (
           <div className="Button">
-            <Link to={link.url}>{link.label}</Link>
+            {link.url.startsWith("#") ? (
+              <a href={link.url}>{link.label}</a>
+            ) : (
+              <Link to={link.url}>{link.label}</Link>
+            )}
           </div>
         ))}
       </div>
