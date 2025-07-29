@@ -43,3 +43,45 @@ src/
 ```
 
 Keep this folder organized by feature to improve maintainability and collaboration.
+
+## Implemented Features
+
+Below are the features currently implemented in this folder:
+
+```
+features/
+│
+├── ArticleFeedbackButtons/
+│   ├── ArticleFeedbackButtons.tsx
+│   └── ArticleFeedbackButtons.css
+│
+├── FAQ/
+│   ├── Question.tsx
+│   └── Question.css
+│
+├── LoginDropdown/
+│   ├── LoginDropdown.tsx
+│   └── LoginDropdown.css
+│
+└── UserDropdown/
+    ├── UserDropdown.tsx
+    └── UserDropdown.css
+```
+
+### Feature Descriptions
+
+- **ArticleFeedbackButtons:**  
+  Provides interactive feedback buttons (inside a spectrum of choice) for articles, allowing users to submit their reactions.
+
+- **FAQ:**  
+  Displays frequently asked questions in an interactive, collapsible format for easy access to common information.
+
+- **LoginDropdown:**  
+  A dropdown component for user authentication, presenting a compact login form.
+
+- **UserDropdown:**  
+  A dropdown menu for authenticated users, offering quick access to profile options and logout functionality.
+
+---
+
+Each subfolder contains all the necessary files for its feature, including React components, CSS styles, and any additional logic required for isolated functionality.

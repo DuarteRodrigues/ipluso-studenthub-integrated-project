@@ -32,3 +32,63 @@ src/
 |------ Footer.jsx
 |------ Sidebar.jsx
 ```
+
+## Implemented Layouts
+
+Below are the layout components currently implemented in this folder
+
+```
+layouts/
+│
+├── ArticlesLayout.tsx
+├── EventArticleLayout.tsx
+├── EventsLayout.tsx
+├── HomeLayout.tsx
+├── InternshipArticleLayout.tsx
+├── InternshipsLayout.tsx
+├── NewsArticleLayout.tsx
+├── NewsLayout.tsx
+├── ProfileAdminLayout.tsx
+├── ProfileUserLayout.tsx
+├── SpacesLayout.tsx
+└── README.md
+```
+
+### Layout Descriptions
+
+- **ArticlesLayout.tsx**  
+  Generic layout for displaying lists of articles (news, events, internships) with filtering, tags, and infinite scroll.
+
+- **EventArticleLayout.tsx**  
+  Layout for displaying the details of a single event article, including feedback and tags.
+
+- **EventsLayout.tsx**  
+  Layout for the events listing page, using `ArticlesLayout` to display all events.
+
+- **HomeLayout.tsx**  
+  Main landing page layout, assembling the title card, navigation bar, welcome message, news/events panel, internships panel, space panel, and contacts panel.
+
+- **InternshipArticleLayout.tsx**  
+  Layout for displaying the details of a single internship opportunity, including feedback, tags, and location.
+
+- **InternshipsLayout.tsx**  
+  Layout for the internships listing page, using `ArticlesLayout` to display all internships.
+
+- **NewsArticleLayout.tsx**  
+  Layout for displaying the details of a single news article, including feedback and tags.
+
+- **NewsLayout.tsx**  
+  Layout for the news listing page, using `ArticlesLayout` to display all news articles.
+
+- **ProfileAdminLayout.tsx**  
+  Admin profile layout, allowing management (CRUD) of news, events, and internships, with modals for editing and creating content.
+
+- **ProfileUserLayout.tsx**  
+  User profile layout, displaying user information and lists of news/events the user has interacted with.
+
+- **SpacesLayout.tsx**  
+  Layout for the "Espaços" (Spaces) section, presenting information about the institution's campuses and facilities.
+
+---
+
+Each layout is responsible for the overall structure and composition of a specific page or section, ensuring consistency and maintainability across the application.

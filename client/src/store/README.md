@@ -32,3 +32,28 @@ src/
 |------ middleware.js       # Custom middleware
 |------ selectors.js        # Common selectors
 ```
+
+---
+
+## Implemented State Management
+
+Below are the files currently implemented in this folder:
+
+```
+store/
+│
+├── UserContext.tsx
+└── README.md
+```
+
+### File Descriptions
+
+- **UserContext.tsx**  
+  Implements a React Context for managing user state across the application.  
+  - Stores the current user's information (`userId`, `username`) in state and persists it to `localStorage`.
+  - Provides a `UserProvider` component to wrap the app and make user state available via context.
+  - Exposes a `useUser` hook for accessing and updating the user state from any component.
+
+---
+
+This approach provides a simple and effective way to manage global user state without the complexity of Redux or other state management libraries, making it suitable for applications where only a few pieces of global state are required.

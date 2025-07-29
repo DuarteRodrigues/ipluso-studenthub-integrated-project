@@ -39,3 +39,61 @@ src/
 |---------- mixins.scss
 |----------helpers.scss
 ```
+
+---
+
+## Implemented Styles
+
+Below are the files and folders currently implemented in this directory:
+
+```
+styles/
+│
+├── ArticlesLayout.css
+├── EventArticleLayout.css
+├── FAQPage.css
+├── index.css
+├── InternshipArticleLayout.css
+├── NewsArticleLayout.css
+├── ProfileAdminLayout.css
+├── ProfileUserLayout.css
+├── README.md
+├── SpacesLayout.css
+└── themes/
+```
+
+### File Descriptions
+
+- **ArticlesLayout.css**  
+  Styles for the articles listing layout, including grid, tags bar, and responsive adjustments.
+
+- **EventArticleLayout.css**  
+  Styles for the event article detail page, including layout, tags, and meta information.
+
+- **FAQPage.css**  
+  Styles for the FAQ (Frequently Asked Questions) page.
+
+- **index.css**  
+  Main global stylesheet, including font imports, body and html defaults, and enabling smooth scrolling.
+
+- **InternshipArticleLayout.css**  
+  Styles for the internship article detail page, including layout, details, and location section.
+
+- **NewsArticleLayout.css**  
+  Styles for the news article detail page, including layout, tags, and meta information.
+
+- **ProfileAdminLayout.css**  
+  Styles for the admin profile layout, including sidebar, main content, modals, and responsive adjustments.
+
+- **ProfileUserLayout.css**  
+  Styles for the user profile layout, including sidebar, main content, tabs, and responsive adjustments.
+
+- **SpacesLayout.css**  
+  Styles for the academic spaces layout, including headings, subtitles, and content containers.
+
+- **themes/**  
+  (Folder) Intended for theme-specific styles such as dark mode, light mode, or custom color schemes.
+
+---
+
+Each style file is scoped to a specific layout or global concern, helping maintain a clean and organized styling system across the application.

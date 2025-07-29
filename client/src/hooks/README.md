@@ -31,3 +31,23 @@ src/
 |------ useToggle.js
 |------ useDebounce.js
 ```
+
+## Implemented Hooks
+
+Below are the custom hooks currently implemented in this folder:
+
+- **useArticleFeedback.tsx**  
+  Manages article feedback logic, including fetching, posting, and updating user feedback (like/dislike) for articles.
+
+- **useDropdown.tsx**  
+  Handles dropdown open/close state, toggling, and detects clicks outside the dropdown to close it automatically.
+
+- **useImagesLoaded.tsx**  
+  Checks if all images in a given array of URLs have finished loading, returning a boolean status.
+
+- **useInteractedArticles.tsx**  
+  Fetches and manages the list of articles (news or events) that a user has interacted with, based on user ID.
+
+---
+
+Each hook is documented at the top of its file and is designed to be reusable across different components and features in the application.

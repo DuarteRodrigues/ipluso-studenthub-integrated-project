@@ -29,3 +29,32 @@ src/
 |------ userService.js
 |------ analyticsService.js
 ```
+
+---
+
+## Implemented Services
+
+Below are the service modules currently implemented in this folder:
+
+```
+services/
+│
+├── api.tsx
+└── README.md
+```
+
+### Service Descriptions
+
+- **api.tsx**  
+  Contains functions for interacting with the backend API, including:
+  - Fetching lists of articles (news, events, internships)
+  - Fetching a single article by ID
+  - Fetching articles a user has interacted with
+  - Fetching tags for articles
+  - Creating, updating, and deleting articles (news, events, internships)
+
+  All functions handle HTTP requests, error checking, and response parsing, and are designed to be imported and used by hooks, features, or components throughout the application.
+
+---
+
+Each service module is documented at the top of its file and is designed to be reusable across different parts of the application.
