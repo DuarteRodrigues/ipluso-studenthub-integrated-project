@@ -1,7 +1,7 @@
 /**
  * @file connection.js
  * @description This file establishes a connection to the MongoDB database using the MongoDB Node.js
- * 
+ *
  * @returns {Promise<MongoClient>} A promise that resolves to the MongoDB client instance.
  * @see https://mongodb.github.io/node-mongodb-native/4.9/classes/MongoClient.html
  */
@@ -29,7 +29,7 @@ try {
 }
 
 // * This will connect to the database and create it if it doesn't exist
-// * The database name is "StudentHub"
+// * The database name is "student_hub"
 let db = client.db("student_hub");
 
 export default db;
